@@ -23,12 +23,12 @@ const isMobile = useMediaQuery("(max-width: 768px)")
 const openMobile = ref(false)
 
 const open = useVModel(props, "open", emits, {
-  defaultValue: props.defaultOpen,
-  passive: props.open === undefined,
+  defaultValue: props.defaultOpen ?? true,
+  passive: (props.open === undefined) as false,
 }) as Ref<boolean>
 
 function setOpen(value: boolean) {
-  open.value = value // emits('update:open', value)
+  open.value = value
 
   // This sets the cookie to keep the sidebar state.
   document.cookie = `${SIDEBAR_COOKIE_NAME}=${open.value}; path=/; max-age=${SIDEBAR_COOKIE_MAX_AGE}`
