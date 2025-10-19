@@ -3,7 +3,7 @@
 </script>
 
 <template>
-    <div>create</div>
+    <div>preview</div>
 </template>
 
 <style scoped lang="">

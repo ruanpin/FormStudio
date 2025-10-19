@@ -9,34 +9,19 @@ import {
   SidebarMenuItem,
   SidebarMenuButton
 } from '@/components/ui/sidebar'
-import { Calendar, Home, Inbox, Search, Settings } from "lucide-vue-next"
+import { Cuboid, ScanEye } from "lucide-vue-next"
 
 const items = [
   {
-    title: "Home",
-    url: "#",
-    icon: Home,
+    title: "Builder",
+    url: "builder",
+    icon: Cuboid,
   },
   {
-    title: "Inbox",
-    url: "#",
-    icon: Inbox,
-  },
-  {
-    title: "Calendar",
-    url: "#",
-    icon: Calendar,
-  },
-  {
-    title: "Search",
-    url: "#",
-    icon: Search,
-  },
-  {
-    title: "Settings",
-    url: "#",
-    icon: Settings,
-  },
+    title: "Preview",
+    url: "preview",
+    icon: ScanEye,
+  }
 ];
 </script>
 
@@ -49,10 +34,10 @@ const items = [
           <SidebarMenu>
             <SidebarMenuItem v-for="item in items" :key="item.title">
               <SidebarMenuButton as-child>
-                  <a :href="item.url">
+                  <NuxtLink :prefetch="false" :to="item.url">
                     <component :is="item.icon" />
                     <span>{{item.title}}</span>
-                  </a>
+                  </NuxtLink>
               </SidebarMenuButton>
             </SidebarMenuItem>
           </SidebarMenu>
