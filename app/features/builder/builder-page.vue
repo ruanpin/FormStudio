@@ -1,9 +1,11 @@
 <script setup lang="ts">
-
+import formElementsToolbox from './components/form-elements-toolbox/form-elements-toolbox.vue';
 </script>
 
 <template>
-    <div>213</div>
+    <div>
+        <formElementsToolbox />
+    </div>
 </template>
 
 <style scoped>
