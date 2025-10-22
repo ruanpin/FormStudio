@@ -1,181 +1,172 @@
-export class SpaceY {
-  constructor() {
-    this.type = "spaceY";
-    this.class = {
-      paddingY: ""
-    }
-  }
-}
+import type {
+  SpaceY as ISpaceY,
+  Separator as ISeparator,
+  Option,
+  Input as IInput,
+  InputPassword as IInputPassword,
+  InputDate as IInputDate,
+  Textarea as ITextarea,
+  Radio as IRadio,
+  Toggle as IToggle,
+  Checkbox as ICheckbox,
+  Select as ISelect,
+  UploadImg as IUploadImg
+} from '../types/form-element';
 
-export class Separator {
-  constructor() {
-    this.type = "separator";
+// ================== 特殊元件工廠函數 ==================
+export const SpaceY = (): ISpaceY => ({
+  type: 'spaceY',
+  class: {
+    paddingY: ""
   }
-}
+});
 
-export class BasicOption {
-  constructor() {
-    this.label = "";
-    this.value = "";
-  }
-}
+export const Separator = (): ISeparator => ({
+  type: 'separator'
+});
 
-class BasicInput {
-  constructor() {
-    this.name = "";
-    this.label = "";
-    this.field = "";
-    this.value = "";
-    this.required = false;
-    this.originValue = ""
-    this.class = {
-      layoutFlex: "column"
-    }
-    this.crList = []
-  }
-}
+export const BasicOption = (): Option => ({
+  label: "",
+  value: ""
+});
 
-export class Input extends BasicInput {
-  constructor() {
-    super();
-    this.type = "input";
-  }
-}
-export class InputPassword extends BasicInput {
-  constructor() {
-    super();
-    this.type = "inputPassword";
-    this.limitWordsAmount = ""
-  }
-}
-export class InputDate extends BasicInput {
-  constructor() {
-    super();
-    this.type = "inputDate";
-  }
-}
+// ================== 輸入類型元件工廠函數 ==================
+export const Input = (): IInput => ({
+  type: 'input',
+  name: "",
+  label: "",
+  field: "",
+  value: "",
+  required: false,
+  originValue: "",
+  class: {
+    layoutFlex: "column"
+  },
+  placeholder: "",
+  crList: []
+});
 
-export class Textarea extends BasicInput {
-  constructor() {
-    super();
-    this.type = "textarea";
-    this.limitWordsAmount = "";
-    this.placeholdet = "";
-  }
-}
+export const InputPassword = (): IInputPassword => ({
+  type: 'inputPassword',
+  name: "",
+  label: "",
+  field: "",
+  value: "",
+  required: false,
+  originValue: "",
+  class: {
+    layoutFlex: "column"
+  },
+  limitWordsAmount: "",
+  crList: []
+});
 
-class BasicRadio {
-  constructor() {
-    this.name = "";
-    this.label = "";
-    this.field = "";
-    this.value = "";
-    this.options = [{ label: "", value: "" }];
-    this.required = false;
-    this.originValue = ""
-    this.class = {
-      layoutFlex: "column"
-    }
-    this.crList = []
-  }
-}
+export const InputDate = (): IInputDate => ({
+  type: 'inputDate',
+  name: "",
+  label: "",
+  field: "",
+  value: "",
+  required: false,
+  originValue: "",
+  class: {
+    layoutFlex: "column"
+  },
+  crList: []
+});
 
-export class Radio extends BasicRadio {
-  constructor() {
-    super();
-    this.type = "radio";
-  }
-}
+export const Textarea = (): ITextarea => ({
+  type: 'textarea',
+  name: "",
+  label: "",
+  field: "",
+  value: "",
+  required: false,
+  originValue: "",
+  class: {
+    layoutFlex: "column"
+  },
+  limitWordsAmount: "",
+  placeholder: "",
+  crList: []
+});
 
-class BasicToggle {
-  constructor() {
-    this.name = "";
-    this.label = "";
-    this.field = "";
-    this.value = "";
-    this.truevalue = "";
-    this.falsevalue = "";
-    this.required = false;
-    this.originValue = ""
-    this.class = {
-      layoutFlex: "column"
-    }
-    this.crList = []
-  }
-}
+// ================== 選項類型元件工廠函數 ==================
+export const Radio = (): IRadio => ({
+  type: 'radio',
+  name: "",
+  label: "",
+  field: "",
+  value: "",
+  required: false,
+  originValue: "",
+  class: {
+    layoutFlex: "column"
+  },
+  options: [{ label: "", value: "" }],
+  crList: []
+});
 
-export class Toggle extends BasicToggle {
-  constructor() {
-    super();
-    this.type = "toggle";
-  }
-}
+export const Select = (): ISelect => ({
+  type: 'select',
+  name: "",
+  label: "",
+  field: "",
+  value: "",
+  required: false,
+  originValue: "",
+  class: {
+    layoutFlex: "column"
+  },
+  options: [{ label: "", value: "" }],
+  crList: []
+});
 
-class BasicCheckbox {
-  constructor() {
-    this.name = "";
-    this.label = "";
-    this.field = "";
-    this.value = [];
-    this.options = [{ label: "", value: "" }];
-    this.required = false;
-    this.originValue = []
-    this.class = {
-      layoutFlex: "column"
-    }
-    this.crList = []
-  }
-}
+// ================== 開關類型元件工廠函數 ==================
+export const Toggle = (): IToggle => ({
+  type: 'toggle',
+  name: "",
+  label: "",
+  field: "",
+  value: "",
+  required: false,
+  originValue: "",
+  class: {
+    layoutFlex: "column"
+  },
+  truevalue: "",
+  falsevalue: "",
+  crList: []
+});
 
-export class Checkbox extends BasicCheckbox {
-  constructor() {
-    super()
-    this.type = "checkbox";
-  }
-}
+// ================== 多選類型元件工廠函數 ==================
+export const Checkbox = (): ICheckbox => ({
+  type: 'checkbox',
+  name: "",
+  label: "",
+  field: "",
+  value: [],
+  required: false,
+  originValue: [],
+  class: {
+    layoutFlex: "column"
+  },
+  options: [{ label: "", value: "" }],
+  crList: []
+});
 
-class BasicSelect {
-  constructor() {
-    this.name = "";
-    this.label = "";
-    this.field = "";
-    this.value = "";
-    this.options = [{ label: "", value: "" }];
-    this.required = false;
-    this.originValue = ""
-    this.class = {
-      layoutFlex: "column"
-    }
-    this.crList = []
-  }
-}
-
-export class Select extends BasicSelect {
-  constructor() {
-    super()
-    this.type = "select";
-  }
-}
-
-class BasicUploadImg {
-  constructor() {
-    this.name = "";
-    this.label = "";
-    this.field = "";
-    this.value = null; // 空字串q-file元件會報警告，因此這裡使用null
-    this.previewImgURL = "";
-    this.required = false;
-    this.originValue = null
-    this.class = {
-      layoutFlex: "column"
-    }
-    this.crList = []
-  }
-}
-
-export class UploadImg extends BasicUploadImg {
-  constructor() {
-    super()
-    this.type = "uploadImg";
-  }
-}
+// ================== 上傳類型元件工廠函數 ==================
+export const UploadImg = (): IUploadImg => ({
+  type: 'uploadImg',
+  name: "",
+  label: "",
+  field: "",
+  value: null, // 空字串q-file元件會報警告，因此這裡使用null
+  required: false,
+  originValue: null,
+  class: {
+    layoutFlex: "column"
+  },
+  previewImgURL: "",
+  crList: []
+});

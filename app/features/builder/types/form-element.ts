@@ -1,15 +1,15 @@
 // ================== 基礎類型定義 ==================
-export type FormElementType = 
-  | 'spaceY' 
-  | 'separator' 
-  | 'input' 
-  | 'inputPassword' 
-  | 'inputDate' 
-  | 'textarea' 
-  | 'radio' 
-  | 'toggle' 
-  | 'checkbox' 
-  | 'select' 
+export type FormElementType =
+  | 'spaceY'
+  | 'separator'
+  | 'input'
+  | 'inputPassword'
+  | 'inputDate'
+  | 'textarea'
+  | 'radio'
+  | 'toggle'
+  | 'checkbox'
+  | 'select'
   | 'uploadImg';
 
 export type LayoutFlex = 'row' | 'column';
@@ -33,7 +33,7 @@ interface BaseFormElement<T extends FormElementType = FormElementType> {
   field: string;
   required: boolean;
   class: LayoutClass;
-  crList: unknown[];
+  crList: FormElement[];
 }
 
 interface BaseInput<T extends FormElementType> extends BaseFormElement<T> {
@@ -79,34 +79,36 @@ export interface Separator {
 }
 
 // ================== 輸入類型元件 ==================
-export interface Input extends BaseInput<'input'> {}
+export interface Input extends BaseInput<'input'> {
+  placeholder: string;
+}
 
 export interface InputPassword extends BaseInput<'inputPassword'> {
   limitWordsAmount: string;
 }
 
-export interface InputDate extends BaseInput<'inputDate'> {}
+export interface InputDate extends BaseInput<'inputDate'> { }
 
 export interface Textarea extends BaseInput<'textarea'> {
   limitWordsAmount: string;
-  placeholdet: string;
+  placeholder: string;
 }
 
 // ================== 選項類型元件 ==================
-export interface Radio extends BaseOptions<'radio'> {}
+export interface Radio extends BaseOptions<'radio'> { }
 
-export interface Select extends BaseOptions<'select'> {}
+export interface Select extends BaseOptions<'select'> { }
 
-export interface Checkbox extends BaseMultiSelect<'checkbox'> {}
+export interface Checkbox extends BaseMultiSelect<'checkbox'> { }
 
 // ================== 開關類型元件 ==================
-export interface Toggle extends BaseToggle<'toggle'> {}
+export interface Toggle extends BaseToggle<'toggle'> { }
 
 // ================== 上傳類型元件 ==================
-export interface UploadImg extends BaseUpload<'uploadImg'> {}
+export interface UploadImg extends BaseUpload<'uploadImg'> { }
 
 // ================== 聯合類型 ==================
-export type FormElement = 
+export type FormElement =
   | SpaceY
   | Separator
   | Input
@@ -121,10 +123,10 @@ export type FormElement =
 
 // ================== 類型守護 ==================
 export const isFormElement = (element: unknown): element is FormElement => {
-  return typeof element === 'object' && 
-         element !== null && 
-         'type' in element &&
-         typeof (element as any).type === 'string';
+  return typeof element === 'object' &&
+    element !== null &&
+    'type' in element &&
+    typeof (element as any).type === 'string';
 };
 
 export const isInputElement = (element: FormElement): element is Input | InputPassword | InputDate | Textarea => {
