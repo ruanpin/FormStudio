@@ -2,10 +2,12 @@
 const isDragging = ref(false)
 
 const startDrag = (event: DragEvent) => {
+    console.log('sttart');
     isDragging.value = true
 }
 
 const endDrag = () => {
+    console.log('end');
     isDragging.value = false
 }
 

@@ -3,11 +3,5 @@ import formElementsToolbox from './components/form-elements-toolbox/form-element
 </script>
 
 <template>
-    <div>
-        <formElementsToolbox />
-    </div>
+    <formElementsToolbox />
 </template>
-
-<style scoped>
-    
-</style>
