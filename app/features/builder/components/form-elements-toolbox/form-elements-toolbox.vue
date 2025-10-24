@@ -36,7 +36,7 @@ const filteredFormElements = computed<FormElement[]>(() => {
     if(!searchInput.value) {
         return formElements.value
     }
-    return formElements.value.filter(e => e.type.includes(searchInput.value))
+    return formElements.value.filter(e => e.type.toLowerCase().includes(searchInput.value.toLowerCase()))
 })
 </script>
 
