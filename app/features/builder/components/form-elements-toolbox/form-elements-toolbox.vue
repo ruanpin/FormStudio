@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import SearchInput from '@/components/atoms/input.vue'
 import formElementBox from './components/form-element-box.vue';
+import type { FormElement } from '../../types/form-element';
 import {
     SpaceY,
     Separator,
@@ -29,9 +30,9 @@ const formElements = ref([
     UploadImg()
 ])
 
-const searchInput = ref("")
+const searchInput = ref<string>("")
 
-const filteredFormElements = computed(() => {
+const filteredFormElements = computed<FormElement[]>(() => {
     if(!searchInput.value) {
         return formElements.value
     }
