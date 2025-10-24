@@ -16,7 +16,7 @@ import {
     UploadImg
 } from '../../schemas/form-element'
 
-const formElements = ref([
+const formElements = ref<FormElement[]>([
     SpaceY(),
     Separator(),
     Input(),
