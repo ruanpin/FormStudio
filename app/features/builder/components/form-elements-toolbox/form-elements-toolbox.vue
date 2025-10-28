@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import SearchInput from '@/components/atoms/input.vue'
-import formElementBox from './components/form-element-box.vue';
+import DragBox from './components/drag-box.vue';
 import type { FormElement } from '../../types/form-element';
 import {
     SpaceY,
@@ -46,7 +46,7 @@ const filteredFormElements = computed<FormElement[]>(() => {
             v-model="searchInput"
             placeholder="搜尋表單元素"
         />
-        <formElementBox
+        <DragBox
             v-for="element in filteredFormElements"
             :key="element.type"
             :element-type="element.type"
@@ -54,6 +54,6 @@ const filteredFormElements = computed<FormElement[]>(() => {
             <div>
                 {{ element.type }}
             </div>
-        </formElementBox>
+        </DragBox>
     </div>
 </template>
