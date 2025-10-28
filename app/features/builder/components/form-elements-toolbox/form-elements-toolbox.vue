@@ -49,6 +49,7 @@ const filteredFormElements = computed<FormElement[]>(() => {
         <formElementBox
             v-for="element in filteredFormElements"
             :key="element.type"
+            :element-type="element.type"
         >
             <div>
                 {{ element.type }}

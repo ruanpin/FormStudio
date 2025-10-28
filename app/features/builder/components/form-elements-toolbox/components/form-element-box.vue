@@ -1,13 +1,19 @@
 <script setup lang="ts">
+const props = defineProps<{
+    elementType: string
+}>()
+
 const isDragging = ref(false)
 
-const startDrag = (event: DragEvent) => {
-    console.log('sttart');
+const startDrag = (e: DragEvent) => {
+    const dt = e.dataTransfer
+    if (!dt) return
+
+    e.dataTransfer.setData("text", props.elementType);
     isDragging.value = true
 }
 
 const endDrag = () => {
-    console.log('end');
     isDragging.value = false
 }
 
