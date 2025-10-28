@@ -49,7 +49,7 @@ const filteredFormElements = computed<FormElement[]>(() => {
         <DragBox
             v-for="element in filteredFormElements"
             :key="element.type"
-            :element-type="element.type"
+            :element-json="JSON.stringify(element)"
         >
             <div>
                 {{ element.type }}

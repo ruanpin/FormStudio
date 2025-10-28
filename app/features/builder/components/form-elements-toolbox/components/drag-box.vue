@@ -1,6 +1,6 @@
 <script setup lang="ts">
 const props = defineProps<{
-    elementType: string
+    elementJson: string
 }>()
 
 const isDragging = ref(false)
@@ -9,7 +9,7 @@ const startDrag = (e: DragEvent) => {
     const dt = e.dataTransfer
     if (!dt) return
 
-    e.dataTransfer.setData("text", props.elementType);
+    e.dataTransfer.setData("application/json", props.elementJson);
     isDragging.value = true
 }
 

@@ -16,7 +16,7 @@ console.log(e.target, '放下的元素');
   isOver.value = false
 
   if (!e.dataTransfer) return
-  const data = e.dataTransfer.getData('text/plain')
+  const data = e.dataTransfer.getData('application/json')
   console.log('Dropped type:', data)
 }
 </script>
