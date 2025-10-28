@@ -3,6 +3,8 @@ import DropBox from './components/drop-box.vue';
 </script>
 
 <template>
-    <div class="p-4">settings</div>
-    <DropBox />
+    <div class="p-3">
+      settings
+      <DropBox />
+    </div>
 </template>

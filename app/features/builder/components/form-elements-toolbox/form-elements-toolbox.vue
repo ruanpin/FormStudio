@@ -41,7 +41,7 @@ const filteredFormElements = computed<FormElement[]>(() => {
 </script>
 
 <template>
-    <div class="p-4 flex flex-col gap-2">
+    <div class="p-3 flex flex-col gap-2">
         <SearchInput
             v-model="searchInput"
             placeholder="搜尋表單元素"

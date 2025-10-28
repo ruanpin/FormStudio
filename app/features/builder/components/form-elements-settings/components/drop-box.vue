@@ -23,7 +23,7 @@ console.log(e.target, '放下的元素');
 
 <template>
     <div
-        class="w-64 h-40 flex items-center justify-center rounded transition-colors duration-200"
+        class="h-10 flex items-center justify-center rounded transition-colors duration-200"
         :class="isOver ? 'border-2 border-dashed border-green-500 bg-green-50' : 'border-2 border-gray-300'"
         @dragover="handleDragOver"
         @drop="handleDrop"
