@@ -1,24 +1,26 @@
 <script setup lang="ts">
+import { useDraggingStore } from '@/store/drag'
+
+const draggingStore = useDraggingStore()
+
 const props = defineProps<{
     elementJson: string
 }>()
-
-const isDragging = ref(false)
 
 const startDrag = (e: DragEvent) => {
     const dt = e.dataTransfer
     if (!dt) return
 
     e.dataTransfer.setData("application/json", props.elementJson);
-    isDragging.value = true
+    draggingStore.handleDraggingChange(true)
 }
 
 const endDrag = () => {
-    isDragging.value = false
+    draggingStore.handleDraggingChange(false)
 }
 
 const cursorClass = computed(() => {
-    if (isDragging.value) {
+    if (draggingStore.isDragging) {
         return 'cursor-grabbing'
     }
     return 'hover:cursor-grab'

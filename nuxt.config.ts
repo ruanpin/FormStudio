@@ -10,7 +10,8 @@ export default defineNuxtConfig({
   modules: [
     '@nuxtjs/tailwindcss',
     'shadcn-nuxt',
-    '@vueuse/nuxt'
+    '@vueuse/nuxt',
+    '@pinia/nuxt'
   ],
   shadcn: {
     /**
@@ -23,4 +24,5 @@ export default defineNuxtConfig({
      */
     componentDir: './app/components/ui'
   },
+  pinia: {}
 })
