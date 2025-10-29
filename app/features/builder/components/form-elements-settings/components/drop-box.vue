@@ -1,4 +1,6 @@
 <script setup lang="ts">
+const emit = defineEmits(['dropped'])
+
 const isOver = ref(false)
 
 const handleDragOver = (e: DragEvent) => {
@@ -16,8 +18,13 @@ console.log(e.target, '放下的元素');
   isOver.value = false
 
   if (!e.dataTransfer) return
-  const data = e.dataTransfer.getData('application/json')
-  console.log('Dropped type:', data)
+  const element = JSON.parse(e.dataTransfer.getData('application/json'))
+  // console.log('Dropped type:', element)
+  // 抓index，以及處理拖動時顯示drop組件
+  emit('dropped', {
+    index: 0,
+    element
+  })
 }
 </script>
 
