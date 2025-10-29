@@ -1,21 +1,21 @@
 import type { FormElement } from './form-element'
 
 interface Urls {
-    url: string
+    url: string;
 }
 
-type Method = 'GET' | 'POST' | 'PUT' | 'DELETE'
+type Method = 'GET' | 'POST' | 'PUT' | 'DELETE';
 
-type PayloadType = 'form-data' | 'json'
+type PayloadType = 'form-data' | 'json';
 
 interface Submit {
     method: Method,
-    urls: Urls[],
-    ask: boolean,
-    payloadType: PayloadType
+    urls: Urls[];
+    ask: boolean;
+    payloadType: PayloadType;
 }
 
 export interface FormConfig {
-    render: FormElement[],
-    submit: Submit
+    render: FormElement[];
+    submit: Submit;
 }
