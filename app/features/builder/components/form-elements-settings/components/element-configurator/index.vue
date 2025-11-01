@@ -4,7 +4,9 @@ const element = defineModel<FormElement>('element', { required: true })
 </script>
 
 <template>
-    <div>element-configurator</div>
-    <div>基本設定</div>
-    <div>{{ element.type }}</div>
+    <div class="border-2">
+        <div>element-configurator</div>
+        <div>基本設定</div>
+        <div>{{ element.type }}</div>
+    </div>
 </template>

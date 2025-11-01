@@ -18,20 +18,28 @@ const formConfig = ref<FormConfig>({
 })
 
 const handleDropped = ({ index, element }: { index: number; element: FormElement }) => {
-  console.log(index, element);
-  formConfig.value.render.push(element)
+  console.log(index, element, 'handleDropped');
+  formConfig.value.render.splice(index, 0, element)
 }
 </script>
 
 <template>
-    <div class="p-3 flex-col gap-4">
-      <DropBox @dropped="handleDropped"/>
+    <div class="p-3 flex-col">
+      <DropBox
+        :drop-index="0"
+        @dropped="handleDropped"
+      />
       <div
-        class="border-2"
         v-for="(_, index) in formConfig.render"
         :key="index"
       >
-        <ElementConfigurator v-model:element="formConfig.render[index]!"/>
+        <ElementConfigurator
+          v-model:element="formConfig.render[index]!"
+        />
+        <DropBox
+          :drop-index="index + 1"
+          @dropped="handleDropped"
+        />
       </div>
     </div>
 </template>
