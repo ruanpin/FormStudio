@@ -1,17 +1,18 @@
 <script setup lang="ts">
 import { useDraggingStore } from '@/store/drag'
+import type { FormElement } from '../../../types/form-element';
 
 const draggingStore = useDraggingStore()
 
 const props = defineProps<{
-    elementJson: string
+    element: FormElement
 }>()
 
 const startDrag = (e: DragEvent) => {
     const dt = e.dataTransfer
     if (!dt) return
 
-    e.dataTransfer.setData("application/json", props.elementJson);
+    e.dataTransfer.setData("application/json", JSON.stringify(props.element));
     draggingStore.handleDraggingChange(true)
     draggingStore.handleDraggingTypeChange('create')
 }
