@@ -6,7 +6,7 @@ const draggingStore = useDraggingStore()
 const props = defineProps<{
   dropIndex: number
 }>()
-const emit = defineEmits(['dropped'])
+const emit = defineEmits(['dropped-create', 'dropped-reorder'])
 
 const isOver = ref(false)
 
@@ -19,19 +19,36 @@ const handleDragLeave = () => {
   isOver.value = false
 }
 
+const createElement = (dataTransfer: DataTransfer) => {
+  const element = JSON.parse(dataTransfer.getData('application/json'))
+  emit('dropped-create', {
+    index: props.dropIndex,
+    element
+  })
+}
+
+const reorderElement = (dataTransfer: DataTransfer, dropIndex: number) => {
+  const { sourceIndex } = JSON.parse(dataTransfer.getData('application/json'))
+  emit('dropped-reorder', {
+    sourceIndex: sourceIndex,
+    targetIndex: dropIndex
+  })
+}
+
 const handleDrop = (e: DragEvent) => {
 console.log(e.target, '放下的元素');
   e.preventDefault()
   isOver.value = false
 
-  if (!e.dataTransfer) return
-  const element = JSON.parse(e.dataTransfer.getData('application/json'))
-  // console.log('Dropped type:', element)
-  // 抓index，以及處理拖動時顯示drop組件
-  emit('dropped', {
-    index: props.dropIndex,
-    element
-  })
+  if (!e.dataTransfer) {
+    return
+  }
+
+  if (draggingStore.draggingType === 'create') {
+    createElement(e.dataTransfer)
+  } else if (draggingStore.draggingType === 'reorder') {
+    reorderElement(e.dataTransfer, props.dropIndex)
+  }
 }
 </script>
 
@@ -48,6 +65,6 @@ console.log(e.target, '放下的元素');
     @drop="handleDrop"
     @dragleave="handleDragLeave"
   >
-    Drop here
+    Drop here {{ props.dropIndex }}
   </div>
 </template>

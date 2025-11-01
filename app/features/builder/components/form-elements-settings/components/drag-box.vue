@@ -4,16 +4,16 @@ import { useDraggingStore } from '@/store/drag'
 const draggingStore = useDraggingStore()
 
 const props = defineProps<{
-    elementJson: string
+    sourceIndex: number
 }>()
 
 const startDrag = (e: DragEvent) => {
     const dt = e.dataTransfer
     if (!dt) return
 
-    e.dataTransfer.setData("application/json", props.elementJson);
+    e.dataTransfer.setData("application/json", JSON.stringify({ sourceIndex: props.sourceIndex }));
     draggingStore.handleDraggingChange(true)
-    draggingStore.handleDraggingTypeChange('create')
+    draggingStore.handleDraggingTypeChange('reorder')
 }
 
 const endDrag = () => {

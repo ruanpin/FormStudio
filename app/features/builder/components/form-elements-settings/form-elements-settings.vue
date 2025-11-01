@@ -17,9 +17,18 @@ const formConfig = ref<FormConfig>({
   }
 })
 
-const handleDropped = ({ index, element }: { index: number; element: FormElement }) => {
-  console.log(index, element, 'handleDropped');
+const handleDroppedCreate = ({ index, element }: { index: number; element: FormElement }) => {
+  console.log(index, element, 'handleDroppedCreate');
   formConfig.value.render.splice(index, 0, element)
+}
+
+const handleDroppedReorder = ({ sourceIndex, targetIndex }: { sourceIndex: number; targetIndex: number }) => {
+  console.log(sourceIndex, targetIndex, 'handleDroppedReorder');
+  const [target] = formConfig.value.render.splice(sourceIndex, 1)
+  if (!target) {
+    return
+  }
+  formConfig.value.render.splice(targetIndex, 0, target)
 }
 </script>
 
@@ -27,7 +36,8 @@ const handleDropped = ({ index, element }: { index: number; element: FormElement
     <div class="p-3 flex-col">
       <DropBox
         :drop-index="0"
-        @dropped="handleDropped"
+        @dropped-create="handleDroppedCreate"
+        @dropped-reorder="handleDroppedReorder"
       />
       <div
         v-for="(_, index) in formConfig.render"
@@ -35,10 +45,12 @@ const handleDropped = ({ index, element }: { index: number; element: FormElement
       >
         <ElementConfigurator
           v-model:element="formConfig.render[index]!"
-        />
+          :source-index="index"
+        />{{ index }}
         <DropBox
           :drop-index="index + 1"
-          @dropped="handleDropped"
+          @dropped-create="handleDroppedCreate"
+          @dropped-reorder="handleDroppedReorder"
         />
       </div>
     </div>
