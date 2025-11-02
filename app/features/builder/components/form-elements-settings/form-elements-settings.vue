@@ -19,7 +19,6 @@ const formConfig = ref<FormConfig>({
 })
 
 const handleDroppedCreate = ({ index, element }: { index: number; element: FormElement }) => {
-  console.log(index, element, 'handleDroppedCreate');
   // 為新創建的元素添加唯一 ID
   const elementWithId = { ...element, id: nanoid() }
   formConfig.value.render.splice(index, 0, elementWithId)

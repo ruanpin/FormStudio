@@ -36,7 +36,6 @@ const reorderElement = (dataTransfer: DataTransfer, dropIndex: number) => {
 }
 
 const handleDrop = (e: DragEvent) => {
-console.log(e.target, '放下的元素');
   e.preventDefault()
   isOver.value = false
 
