@@ -65,6 +65,6 @@ console.log(e.target, '放下的元素');
     @drop="handleDrop"
     @dragleave="handleDragLeave"
   >
-    Drop here {{ props.dropIndex }}
+    Drop here
   </div>
 </template>
