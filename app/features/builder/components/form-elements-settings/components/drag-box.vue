@@ -20,6 +20,7 @@ const startDrag = (e: DragEvent) => {
 const endDrag = () => {
     draggingStore.handleDraggingChange(false)
     draggingStore.handleDraggingTypeChange(null)
+    draggingStore.handleDraggingSourceIndexChange(null)
 }
 
 const cursorClass = computed(() => {
