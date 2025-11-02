@@ -56,7 +56,7 @@ console.log(e.target, '放下的元素');
   <div
     class="flex items-center justify-center rounded transition-all duration-300 ease-in-out"
     :class="[
-      draggingStore.isDragging
+      draggingStore.shouldShowDropBox(props.dropIndex)
         ? 'h-10 opacity-100 scale-100 pointer-events-auto my-4'
         : 'h-0 opacity-0 scale-95 pointer-events-none',
       isOver ? 'border-2 border-dashed border-green-500 bg-green-50' : 'border-2 border-gray-300'

@@ -14,6 +14,7 @@ const startDrag = (e: DragEvent) => {
     e.dataTransfer.setData("application/json", JSON.stringify({ sourceIndex: props.sourceIndex }));
     draggingStore.handleDraggingChange(true)
     draggingStore.handleDraggingTypeChange('reorder')
+    draggingStore.handleDraggingSourceIndexChange(props.sourceIndex)
 }
 
 const endDrag = () => {
