@@ -27,6 +27,7 @@ export interface LayoutClass {
 
 // ================== 抽象基礎介面 ==================
 interface BaseFormElement<T extends FormElementType = FormElementType> {
+  readonly id: string;
   readonly type: T;
   name: string;
   label: string;
@@ -68,6 +69,7 @@ interface BaseUpload<T extends FormElementType> extends BaseFormElement<T> {
 
 // ================== 特殊元件介面 ==================
 export interface SpaceY {
+  readonly id: string;
   readonly type: 'spaceY';
   class: {
     paddingY: string;
@@ -75,6 +77,7 @@ export interface SpaceY {
 }
 
 export interface Separator {
+  readonly id: string;
   readonly type: 'separator';
 }
 

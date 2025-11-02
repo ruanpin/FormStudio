@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import DropBox from './components/drop-box.vue';
 import ElementConfigurator from './components/element-configurator/index.vue';
+import { nanoid } from 'nanoid'
 
 import type { FormConfig } from '../../types/form-config'
 import type { FormElement } from '../../types/form-element'
@@ -19,7 +20,9 @@ const formConfig = ref<FormConfig>({
 
 const handleDroppedCreate = ({ index, element }: { index: number; element: FormElement }) => {
   console.log(index, element, 'handleDroppedCreate');
-  formConfig.value.render.splice(index, 0, element)
+  // 為新創建的元素添加唯一 ID
+  const elementWithId = { ...element, id: nanoid() }
+  formConfig.value.render.splice(index, 0, elementWithId)
 }
 
 const handleDroppedReorder = ({ sourceIndex, targetIndex }: { sourceIndex: number; targetIndex: number }) => {
@@ -43,19 +46,34 @@ const handleDroppedReorder = ({ sourceIndex, targetIndex }: { sourceIndex: numbe
         @dropped-create="handleDroppedCreate"
         @dropped-reorder="handleDroppedReorder"
       />
-      <div
-        v-for="(_, index) in formConfig.render"
-        :key="index"
-      >
-        <ElementConfigurator
-          v-model:element="formConfig.render[index]!"
-          :source-index="index"
-        />
-        <DropBox
-          :drop-index="index + 1"
-          @dropped-create="handleDroppedCreate"
-          @dropped-reorder="handleDroppedReorder"
-        />
-      </div>
+      <TransitionGroup name="list">
+        <div
+          v-for="(element, index) in formConfig.render"
+          :key="element.id"
+        >
+          <ElementConfigurator
+            v-model:element="formConfig.render[index]!"
+            :source-index="index"
+          />
+          <DropBox
+            :drop-index="index + 1"
+            @dropped-create="handleDroppedCreate"
+            @dropped-reorder="handleDroppedReorder"
+          />
+        </div>
+      </TransitionGroup>
     </div>
 </template>
+
+<style scoped>
+  .list-enter-active, .list-leave-active {
+    transition: all 1s ease;
+  }
+  .list-enter-from, .list-leave-to {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  .list-move {
+    transition: all 1s ease;
+  }
+</style>
