@@ -4,9 +4,9 @@ import AppSidebar from "@/components/layouts/app-sidebar.vue"
 </script>
 
 <template>
-    <SidebarProvider>
+    <SidebarProvider class="h-screen overflow-hidden">
         <AppSidebar />
-        <SidebarInset>
+        <SidebarInset class="h-full overflow-hidden">
             <SidebarTrigger />
             <slot />
         </SidebarInset>

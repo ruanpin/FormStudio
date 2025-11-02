@@ -1,7 +1,8 @@
 <script setup lang="ts">
+import { nanoid } from 'nanoid'
+
 import DropBox from './components/drop-box.vue';
 import ElementConfigurator from './components/element-configurator/index.vue';
-import { nanoid } from 'nanoid'
 
 import type { FormConfig } from '../../types/form-config'
 import type { FormElement } from '../../types/form-element'
