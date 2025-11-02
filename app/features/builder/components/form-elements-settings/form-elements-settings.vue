@@ -23,12 +23,16 @@ const handleDroppedCreate = ({ index, element }: { index: number; element: FormE
 }
 
 const handleDroppedReorder = ({ sourceIndex, targetIndex }: { sourceIndex: number; targetIndex: number }) => {
-  console.log(sourceIndex, targetIndex, 'handleDroppedReorder');
-  const [target] = formConfig.value.render.splice(sourceIndex, 1)
-  if (!target) {
-    return
-  }
-  formConfig.value.render.splice(targetIndex, 0, target)
+  // 相同位置不需要處理
+  if (sourceIndex === targetIndex) return
+  
+  // 從原位置移除元素
+  const [item] = formConfig.value.render.splice(sourceIndex, 1)
+  if (!item) return
+  
+  // 向下移動時需要補償索引偏移（因為splice已刪除元素）
+  const adjustedIndex = sourceIndex < targetIndex ? targetIndex - 1 : targetIndex
+  formConfig.value.render.splice(adjustedIndex, 0, item)
 }
 </script>
 
