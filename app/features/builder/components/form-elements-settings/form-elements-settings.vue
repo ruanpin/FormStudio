@@ -46,7 +46,7 @@ const handleDroppedReorder = ({ sourceIndex, targetIndex }: { sourceIndex: numbe
         <ElementConfigurator
           v-model:element="formConfig.render[index]!"
           :source-index="index"
-        />{{ index }}
+        />
         <DropBox
           :drop-index="index + 1"
           @dropped-create="handleDroppedCreate"

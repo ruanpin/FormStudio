@@ -14,7 +14,6 @@ defineProps<{
             <div>element-configurator</div>
             <div>基本設定</div>
             <div>{{ element.type }}</div>
-            {{ sourceIndex }}
         </div>
     </DragBox>
 </template>
