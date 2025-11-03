@@ -1,24 +1,28 @@
 <script setup>
+import Checkbox from '@/components/atoms/checkbox.vue';
+import Input from '@/components/atoms/input.vue';
 const element = defineModel('element')
 </script>
 
 <template>
-  <div class="q-gutter-md">
+  <div class="space-y-4">
     <div>
-      <div class="options-title">欄位必填(required)？</div>
-      <q-checkbox class="" dense v-model="formObj.required">必填</q-checkbox>
+      <div class="text-4 font-bold">欄位必填(required)？</div>
+      <Checkbox v-model="element.required">
+        必填
+      </Checkbox>
     </div>
     <div>
-      <div class="options-title">物件名稱(name)</div>
-      <q-input class="" dense rounded outlined v-model="formObj.name" ></q-input>
+      <div class="text-4 font-bold">物件名稱(name)</div>
+      <Input v-model="element.name" ></Input>
     </div>
     <div>
-      <div class="options-title">表單顯示名稱(label)</div>
-      <q-input class="" dense rounded outlined v-model="formObj.label" ></q-input>
+      <div class="text-4 font-bold">表單顯示名稱(label)</div>
+      <Input v-model="element.label" ></Input>
     </div>
     <div>
-      <div class="options-title">API對應key(field)</div>
-      <q-input class="" dense rounded outlined v-model="formObj.field" ></q-input>
+      <div class="text-4 font-bold">API對應key(field)</div>
+      <Input v-model="element.field" ></Input>
     </div>
     <slot></slot>
   </div>
