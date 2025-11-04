@@ -1,7 +1,9 @@
-<script setup>
+<script setup lang="ts">
 import Checkbox from '@/components/atoms/checkbox.vue';
 import Input from '@/components/atoms/input.vue';
-const element = defineModel('element')
+import type { Input as IInput } from '../../../../../types/form-element';
+
+const element = defineModel<IInput>('element', { required: true })
 </script>
 
 <template>
