@@ -10,7 +10,7 @@ defineProps<{
     sourceIndex: number
 }>()
 
-const ElementConfigMap: Record<FormElementType, Component> = {
+const elementConfigMap: Record<FormElementType, Component> = {
   input: defineAsyncComponent(() => import('./components/input-options.vue')),
   inputPassword: defineAsyncComponent(() => import('./components/input-options.vue')),
   inputDate: defineAsyncComponent(() => import('./components/input-options.vue')),
@@ -23,6 +23,18 @@ const ElementConfigMap: Record<FormElementType, Component> = {
 //   spaceY: defineAsyncComponent(() => import('./components/input-options.vue')),
 //   separator: defineAsyncComponent(() => import('./components/input-options.vue')),
 }
+
+const baseStyleMap: Record<Exclude<FormElementType, 'spaceY' | 'separator'>, Component> = {
+    input: defineAsyncComponent(()=> import('./components/base-style-options.vue')),
+    inputPassword: defineAsyncComponent(()=> import('./components/base-style-options.vue')),
+    inputDate: defineAsyncComponent(()=> import('./components/base-style-options.vue')),
+    radio: defineAsyncComponent(()=> import('./components/base-style-options.vue')),
+    toggle: defineAsyncComponent(()=> import('./components/base-style-options.vue')),
+    textarea: defineAsyncComponent(()=> import('./components/base-style-options.vue')),
+    checkbox: defineAsyncComponent(()=> import('./components/base-style-options.vue')),
+    select: defineAsyncComponent(()=> import('./components/base-style-options.vue')),
+    uploadImg: defineAsyncComponent(()=> import('./components/base-style-options.vue')),
+}
 </script>
 
 <template>
@@ -32,7 +44,11 @@ const ElementConfigMap: Record<FormElementType, Component> = {
             <div>{{ element.type }}</div>
             <div>基本設定</div>
             <component
-                :is="ElementConfigMap[element.type]"
+                :is="elementConfigMap[element.type]"
+                v-model:element="element"
+            />
+            <component
+                :is="baseStyleMap[element.type as Exclude<FormElementType, 'spaceY' | 'separator'>]"
                 v-model:element="element"
             />
         </div>
