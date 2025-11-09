@@ -1,4 +1,3 @@
-import { nanoid } from 'nanoid'
 import type {
   SpaceY as ISpaceY,
   Separator as ISeparator,
@@ -16,7 +15,6 @@ import type {
 
 // ================== 特殊元件工廠函數 ==================
 export const SpaceY = (): ISpaceY => ({
-  id: nanoid(),
   type: 'spaceY',
   class: {
     paddingY: ""
@@ -24,7 +22,6 @@ export const SpaceY = (): ISpaceY => ({
 });
 
 export const Separator = (): ISeparator => ({
-  id: nanoid(),
   type: 'separator'
 });
 
@@ -35,7 +32,6 @@ export const BasicOption = (): Option => ({
 
 // ================== 輸入類型元件工廠函數 ==================
 export const Input = (): IInput => ({
-  id: nanoid(),
   type: 'input',
   name: "",
   label: "",
@@ -51,7 +47,6 @@ export const Input = (): IInput => ({
 });
 
 export const InputPassword = (): IInputPassword => ({
-  id: nanoid(),
   type: 'inputPassword',
   name: "",
   label: "",
@@ -67,7 +62,6 @@ export const InputPassword = (): IInputPassword => ({
 });
 
 export const InputDate = (): IInputDate => ({
-  id: nanoid(),
   type: 'inputDate',
   name: "",
   label: "",
@@ -82,7 +76,6 @@ export const InputDate = (): IInputDate => ({
 });
 
 export const Textarea = (): ITextarea => ({
-  id: nanoid(),
   type: 'textarea',
   name: "",
   label: "",
@@ -100,7 +93,6 @@ export const Textarea = (): ITextarea => ({
 
 // ================== 選項類型元件工廠函數 ==================
 export const Radio = (): IRadio => ({
-  id: nanoid(),
   type: 'radio',
   name: "",
   label: "",
@@ -116,7 +108,6 @@ export const Radio = (): IRadio => ({
 });
 
 export const Select = (): ISelect => ({
-  id: nanoid(),
   type: 'select',
   name: "",
   label: "",
@@ -133,7 +124,6 @@ export const Select = (): ISelect => ({
 
 // ================== 開關類型元件工廠函數 ==================
 export const Toggle = (): IToggle => ({
-  id: nanoid(),
   type: 'toggle',
   name: "",
   label: "",
@@ -151,7 +141,6 @@ export const Toggle = (): IToggle => ({
 
 // ================== 多選類型元件工廠函數 ==================
 export const Checkbox = (): ICheckbox => ({
-  id: nanoid(),
   type: 'checkbox',
   name: "",
   label: "",
@@ -168,7 +157,6 @@ export const Checkbox = (): ICheckbox => ({
 
 // ================== 上傳類型元件工廠函數 ==================
 export const UploadImg = (): IUploadImg => ({
-  id: nanoid(),
   type: 'uploadImg',
   name: "",
   label: "",
