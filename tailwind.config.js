@@ -62,9 +62,6 @@ export default {
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
       },
-      spacing: {
-        'select-content-max-h': 'var(--reka-select-content-available-height, 200px)',
-      },
       width: {
         'select-trigger': 'var(--reka-select-trigger-width, 100%)',
         'select-content': 'var(--reka-select-trigger-width, 100%)',
