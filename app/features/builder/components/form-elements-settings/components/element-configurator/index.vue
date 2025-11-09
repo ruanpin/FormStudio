@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import type { Component } from 'vue'
+import { X } from "lucide-vue-next"
 
 import Badge from '@/components/atoms/badge.vue'
 import Item from '@/components/atoms/item.vue'
@@ -44,7 +45,7 @@ const baseStyleMap: Record<BaseStyleType, Component> = {
 <template>
     <DragBox :sourceIndex="sourceIndex">
         <div class="w-full">
-            <Item>
+            <Item class="">
                 <template #title>
                     <span class="text-lg">
                         {{ element.type }}
@@ -52,6 +53,15 @@ const baseStyleMap: Record<BaseStyleType, Component> = {
                 </template>
                 <template #content>
                     {{ element }}
+                </template>
+                <template #action>
+                    <Button
+                        variant="outline"
+                        size="sm"
+                        class="text-red-delete"
+                    >
+                        <X />
+                    </Button>
                 </template>
             </Item>
             <div v-show="elementConfigMap[element.type]" class="mt-6">

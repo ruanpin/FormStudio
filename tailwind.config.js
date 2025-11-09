@@ -55,7 +55,12 @@ export default {
         },
         red: {
           delete: "#BF1419",
+          claret: "#7C1F31",
         },
+        green: {
+          mint: "#69A481",
+          'white-smoke': "#E7EDEB"
+        }
       },
       borderRadius: {
         lg: "var(--radius)",
