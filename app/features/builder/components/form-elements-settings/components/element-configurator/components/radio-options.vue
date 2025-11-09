@@ -32,7 +32,6 @@ const element = defineModel<IRadio>('element', { required: true })
       <div class="text-4 font-bold">API對應key(field)</div>
       <Input v-model="element.field" ></Input>
     </div>
-    <!-- 待處理 -->
     <div class="space-y-2">
       <div class="flex items-center">
         <div class="font-bold">可選選項(options)</div>
