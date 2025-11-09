@@ -14,14 +14,14 @@ import type {
 } from '../types/form-element';
 
 // ================== 特殊元件工廠函數 ==================
-export const SpaceY = (): ISpaceY => ({
+export const SpaceY = (): Omit<ISpaceY, 'id'> => ({
   type: 'spaceY',
   class: {
     paddingY: ""
   }
 });
 
-export const Separator = (): ISeparator => ({
+export const Separator = (): Omit<ISeparator, 'id'> => ({
   type: 'separator'
 });
 
@@ -31,7 +31,7 @@ export const BasicOption = (): Option => ({
 });
 
 // ================== 輸入類型元件工廠函數 ==================
-export const Input = (): IInput => ({
+export const Input = (): Omit<IInput, 'id'> => ({
   type: 'input',
   name: "",
   label: "",
@@ -46,7 +46,7 @@ export const Input = (): IInput => ({
   crList: []
 });
 
-export const InputPassword = (): IInputPassword => ({
+export const InputPassword = (): Omit<IInputPassword, 'id'> => ({
   type: 'inputPassword',
   name: "",
   label: "",
@@ -61,7 +61,7 @@ export const InputPassword = (): IInputPassword => ({
   crList: []
 });
 
-export const InputDate = (): IInputDate => ({
+export const InputDate = (): Omit<IInputDate, 'id'> => ({
   type: 'inputDate',
   name: "",
   label: "",
@@ -75,7 +75,7 @@ export const InputDate = (): IInputDate => ({
   crList: []
 });
 
-export const Textarea = (): ITextarea => ({
+export const Textarea = (): Omit<ITextarea, 'id'> => ({
   type: 'textarea',
   name: "",
   label: "",
@@ -92,7 +92,7 @@ export const Textarea = (): ITextarea => ({
 });
 
 // ================== 選項類型元件工廠函數 ==================
-export const Radio = (): IRadio => ({
+export const Radio = (): Omit<IRadio, 'id'> => ({
   type: 'radio',
   name: "",
   label: "",
@@ -107,7 +107,7 @@ export const Radio = (): IRadio => ({
   crList: []
 });
 
-export const Select = (): ISelect => ({
+export const Select = (): Omit<ISelect, 'id'> => ({
   type: 'select',
   name: "",
   label: "",
@@ -123,7 +123,7 @@ export const Select = (): ISelect => ({
 });
 
 // ================== 開關類型元件工廠函數 ==================
-export const Toggle = (): IToggle => ({
+export const Toggle = (): Omit<IToggle, 'id'> => ({
   type: 'toggle',
   name: "",
   label: "",
@@ -140,7 +140,7 @@ export const Toggle = (): IToggle => ({
 });
 
 // ================== 多選類型元件工廠函數 ==================
-export const Checkbox = (): ICheckbox => ({
+export const Checkbox = (): Omit<ICheckbox, 'id'> => ({
   type: 'checkbox',
   name: "",
   label: "",
@@ -156,7 +156,7 @@ export const Checkbox = (): ICheckbox => ({
 });
 
 // ================== 上傳類型元件工廠函數 ==================
-export const UploadImg = (): IUploadImg => ({
+export const UploadImg = (): Omit<IUploadImg, 'id'> => ({
   type: 'uploadImg',
   name: "",
   label: "",
