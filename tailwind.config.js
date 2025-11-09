@@ -53,6 +53,9 @@ export default {
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
         },
+        red: {
+          delete: "#BF1419",
+        },
       },
       borderRadius: {
         lg: "var(--radius)",

@@ -12,9 +12,9 @@ defineProps<{
 
 const ElementConfigMap: Record<FormElementType, Component> = {
   input: defineAsyncComponent(() => import('./components/input-options.vue')),
-//   inputPassword: defineAsyncComponent(() => import('./components/input-options.vue')),
-//   inputDate: defineAsyncComponent(() => import('./components/input-options.vue')),
-//   radio: defineAsyncComponent(() => import('./components/input-options.vue')),
+  inputPassword: defineAsyncComponent(() => import('./components/input-options.vue')),
+  inputDate: defineAsyncComponent(() => import('./components/input-options.vue')),
+  radio: defineAsyncComponent(() => import('./components/radio-options.vue')),
 //   toggle: defineAsyncComponent(() => import('./components/input-options.vue')),
 //   textarea: defineAsyncComponent(() => import('./components/input-options.vue')),
 //   checkbox: defineAsyncComponent(() => import('./components/input-options.vue')),
