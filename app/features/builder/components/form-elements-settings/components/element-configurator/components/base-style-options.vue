@@ -11,7 +11,7 @@ const LAYOUT_FLEX_LIST = [
 </script>
 
 <template>
-    <div class="my-4">
+    <div>
         <div class="font-bold">元素佈局(class > layoutFlex)(標題與元素)</div>
         <Select v-model="element.class.layoutFlex" :options="LAYOUT_FLEX_LIST" />
         <slot></slot>

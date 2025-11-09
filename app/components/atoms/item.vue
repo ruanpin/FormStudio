@@ -7,7 +7,7 @@ import {
 </script>
 
 <template>
-    <Item variant="outline" class="relative">
+    <Item variant="outline" :class="['relative', $attrs.class]" v-bind="{ ...$attrs, class: undefined }">
       <ItemContent>
         <ItemTitle class="font-bold mb-2">
             <slot name="title"></slot>

@@ -1,8 +1,12 @@
 <script setup lang="ts">
-import DragBox from '../drag-box.vue';
-
 import type { Component } from 'vue'
+
+import Badge from '@/components/atoms/badge.vue'
+import Item from '@/components/atoms/item.vue'
+import DragBox from '../drag-box.vue';
 import type { FormElement, FormElementType } from '../../../../types/form-element'
+
+type BaseStyleType = Exclude<FormElementType, 'spaceY' | 'separator'>
 
 const element = defineModel<FormElement>('element', { required: true })
 
@@ -24,7 +28,7 @@ const elementConfigMap: Record<FormElementType, Component> = {
 //   separator: defineAsyncComponent(() => import('./components/input-options.vue')),
 }
 
-const baseStyleMap: Record<Exclude<FormElementType, 'spaceY' | 'separator'>, Component> = {
+const baseStyleMap: Record<BaseStyleType, Component> = {
     input: defineAsyncComponent(()=> import('./components/base-style-options.vue')),
     inputPassword: defineAsyncComponent(()=> import('./components/base-style-options.vue')),
     inputDate: defineAsyncComponent(()=> import('./components/base-style-options.vue')),
@@ -39,18 +43,31 @@ const baseStyleMap: Record<Exclude<FormElementType, 'spaceY' | 'separator'>, Com
 
 <template>
     <DragBox :sourceIndex="sourceIndex">
-        <div>
-            <div>current object: {{ element }}</div>
-            <div>{{ element.type }}</div>
-            <div>基本設定</div>
-            <component
-                :is="elementConfigMap[element.type]"
-                v-model:element="element"
-            />
-            <component
-                :is="baseStyleMap[element.type as Exclude<FormElementType, 'spaceY' | 'separator'>]"
-                v-model:element="element"
-            />
+        <div class="w-full">
+            <Item>
+                <template #title>
+                    <span class="text-lg">
+                        {{ element.type }}
+                    </span>
+                </template>
+                <template #content>
+                    {{ element }}
+                </template>
+            </Item>
+            <div v-show="elementConfigMap[element.type]" class="mt-6">
+                <Badge class="py-2 px-3">基本設定</Badge>
+                <component
+                    :is="elementConfigMap[element.type]"
+                    v-model:element="element"
+                />
+            </div>
+            <div v-show="baseStyleMap[element.type as BaseStyleType]" class="mt-6">
+                <Badge class="py-2 px-3">樣式設定</Badge>
+                <component
+                    :is="baseStyleMap[element.type as BaseStyleType]"
+                    v-model:element="element"
+                />
+            </div>
         </div>
     </DragBox>
 </template>
