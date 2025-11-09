@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import { nanoid } from 'nanoid'
-
 import DropBox from './components/drop-box.vue';
 import ElementConfigurator from './components/element-configurator/index.vue';
 
@@ -20,9 +18,7 @@ const formConfig = ref<FormConfig>({
 })
 
 const handleDroppedCreate = ({ index, element }: { index: number; element: FormElement }) => {
-  // 為新創建的元素添加唯一 ID
-  const elementWithId = { ...element, id: nanoid() }
-  formConfig.value.render.splice(index, 0, elementWithId)
+  formConfig.value.render.splice(index, 0, element)
 }
 
 const handleDroppedReorder = ({ sourceIndex, targetIndex }: { sourceIndex: number; targetIndex: number }) => {
