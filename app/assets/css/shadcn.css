@@ -19,6 +19,10 @@
   --border: 240 5.9% 90%;
   --input: 240 5.9% 90%;
   --ring: 240 10% 3.9%;
+  
+  /* Reka UI Select variables */
+  --reka-select-trigger-width: 100%;
+  --reka-select-content-available-height: 200px;
 }
 
 .dark {
