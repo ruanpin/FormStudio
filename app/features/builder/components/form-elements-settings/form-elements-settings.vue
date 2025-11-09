@@ -33,6 +33,10 @@ const handleDroppedReorder = ({ sourceIndex, targetIndex }: { sourceIndex: numbe
   const adjustedIndex = sourceIndex < targetIndex ? targetIndex - 1 : targetIndex
   formConfig.value.render.splice(adjustedIndex, 0, item)
 }
+
+const handleDeleteElement = (sourceIndex: number) => {
+  formConfig.value.render.splice(sourceIndex, 1)
+}
 </script>
 
 <template>
@@ -50,6 +54,7 @@ const handleDroppedReorder = ({ sourceIndex, targetIndex }: { sourceIndex: numbe
           <ElementConfigurator
             v-model:element="formConfig.render[index]!"
             :source-index="index"
+            @delete-element="handleDeleteElement"
           />
           <DropBox
             :drop-index="index + 1"

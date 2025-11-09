@@ -1,8 +1,10 @@
 <script setup lang="ts">
 import type { Component } from 'vue'
+import { defineAsyncComponent } from 'vue'
 import { X } from "lucide-vue-next"
 
 import Badge from '@/components/atoms/badge.vue'
+import Button from '@/components/atoms/button.vue'
 import Item from '@/components/atoms/item.vue'
 import DragBox from '../drag-box.vue';
 import type { FormElement, FormElementType } from '../../../../types/form-element'
@@ -14,6 +16,8 @@ const element = defineModel<FormElement>('element', { required: true })
 defineProps<{
     sourceIndex: number
 }>()
+
+const emit = defineEmits(['deleteElement'])
 
 const elementConfigMap: Record<FormElementType, Component> = {
   input: defineAsyncComponent(() => import('./components/input-options.vue')),
@@ -45,7 +49,7 @@ const baseStyleMap: Record<BaseStyleType, Component> = {
 <template>
     <DragBox :sourceIndex="sourceIndex">
         <div class="w-full">
-            <Item class="">
+            <Item>
                 <template #title>
                     <span class="text-lg">
                         {{ element.type }}
@@ -59,6 +63,7 @@ const baseStyleMap: Record<BaseStyleType, Component> = {
                         variant="outline"
                         size="sm"
                         class="text-red-delete"
+                        @click="() => emit('deleteElement', sourceIndex)"
                     >
                         <X />
                     </Button>
