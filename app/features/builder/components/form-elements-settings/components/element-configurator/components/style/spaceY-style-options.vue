@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import Select from '@/components/atoms/select.vue';
-import type { SpaceY as ISpaceY } from '../../../../../types/form-element';
+import type { SpaceY as ISpaceY } from '../../../../../../types/form-element';
 
 const element = defineModel<ISpaceY>('element', { required: true })
 

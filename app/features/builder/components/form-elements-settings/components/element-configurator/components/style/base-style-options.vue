@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import Select from '@/components/atoms/select.vue';
-import type { FormElement as IFormElement, SpaceY, Separator } from '../../../../../types/form-element';
+import type { FormElement as IFormElement, SpaceY, Separator } from '../../../../../../types/form-element';
 
 const element = defineModel<Exclude<IFormElement, SpaceY | Separator>>('element', { required: true })
 

@@ -33,19 +33,19 @@ const elementConfigMap: Record<BaseType, Component> = {
 }
 
 const baseStyleMap: Record<BaseType, Component> = {
-    input: defineAsyncComponent(()=> import('./components/base-style-options.vue')),
-    inputPassword: defineAsyncComponent(()=> import('./components/base-style-options.vue')),
-    inputDate: defineAsyncComponent(()=> import('./components/base-style-options.vue')),
-    radio: defineAsyncComponent(()=> import('./components/base-style-options.vue')),
-    toggle: defineAsyncComponent(()=> import('./components/base-style-options.vue')),
-    textarea: defineAsyncComponent(()=> import('./components/base-style-options.vue')),
-    checkbox: defineAsyncComponent(()=> import('./components/base-style-options.vue')),
-    select: defineAsyncComponent(()=> import('./components/base-style-options.vue')),
-    uploadImg: defineAsyncComponent(()=> import('./components/base-style-options.vue')),
+    input: defineAsyncComponent(()=> import('./components/style/base-style-options.vue')),
+    inputPassword: defineAsyncComponent(()=> import('./components/style/base-style-options.vue')),
+    inputDate: defineAsyncComponent(()=> import('./components/style/base-style-options.vue')),
+    radio: defineAsyncComponent(()=> import('./components/style/base-style-options.vue')),
+    toggle: defineAsyncComponent(()=> import('./components/style/base-style-options.vue')),
+    textarea: defineAsyncComponent(()=> import('./components/style/base-style-options.vue')),
+    checkbox: defineAsyncComponent(()=> import('./components/style/base-style-options.vue')),
+    select: defineAsyncComponent(()=> import('./components/style/base-style-options.vue')),
+    uploadImg: defineAsyncComponent(()=> import('./components/style/base-style-options.vue')),
 }
 
 const specialStyleMap: Record<SpecialStyleType, Component> = {
-    spaceY: defineAsyncComponent(() => import('./components/spaceY-style-options.vue')),
+    spaceY: defineAsyncComponent(() => import('./components/style/spaceY-style-options.vue')),
 }
 </script>
 
