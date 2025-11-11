@@ -70,7 +70,7 @@ const handleDeleteElement = (sourceIndex: number) => {
     </div>
 </template>
 
-<style scoped>
+<style>
   .list-enter-active, .list-leave-active {
     transition: all 1s ease;
   }
