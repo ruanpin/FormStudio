@@ -42,34 +42,36 @@ const element = defineModel<IRadio>('element', { required: true })
         </div>
       </div>
       <div class="space-y-2">
-        <Item
-          v-for="(item, index) in element.options"
-          :key="index"
-        >
-          <template #title>
-            選項 {{ index + 1 }}
-          </template>
-          <template #content>
-            <div>
-              <div class="font-bold">選項顯示名稱(label)</div>
-              <Input v-model="item.label"></Input>
-            </div>
-            <div>
-              <div class="font-medium">選項值(value)</div>
-              <Input v-model="item.value"></Input>
-            </div>
-          </template>
-          <template #action>
-            <Button
-              variant="outline"
-              size="sm"
-              class="text-red-delete"
-              @click="updateOptions({ operate: 'delete', target: element.options, index })"
-            >
-              <Trash />
-            </Button>
-          </template>
-        </Item>
+        <TransitionGroup name="element">
+          <Item
+            v-for="(item, index) in element.options"
+            :key="index"
+          >
+            <template #title>
+              選項 {{ index + 1 }}
+            </template>
+            <template #content>
+              <div>
+                <div class="font-bold">選項顯示名稱(label)</div>
+                <Input v-model="item.label"></Input>
+              </div>
+              <div>
+                <div class="font-medium">選項值(value)</div>
+                <Input v-model="item.value"></Input>
+              </div>
+            </template>
+            <template #action>
+              <Button
+                variant="outline"
+                size="sm"
+                class="text-red-delete"
+                @click="updateOptions({ operate: 'delete', target: element.options, index })"
+              >
+                <Trash />
+              </Button>
+            </template>
+          </Item>
+        </TransitionGroup>
       </div>
     </div>
     <slot></slot>

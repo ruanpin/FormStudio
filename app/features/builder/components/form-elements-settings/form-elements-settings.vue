@@ -50,7 +50,7 @@ const handleDeleteElement = (sourceIndex: number) => {
         @dropped-create="handleDroppedCreate"
         @dropped-reorder="handleDroppedReorder"
       />
-      <TransitionGroup name="list">
+      <TransitionGroup name="element">
         <div
           v-for="(element, index) in formConfig.render"
           :key="element.id"
@@ -69,16 +69,3 @@ const handleDeleteElement = (sourceIndex: number) => {
       </TransitionGroup>
     </div>
 </template>
-
-<style>
-  .list-enter-active, .list-leave-active {
-    transition: all 1s ease;
-  }
-  .list-enter-from, .list-leave-to {
-    opacity: 0;
-    transform: scale(0.8);
-  }
-  .list-move {
-    transition: all 1s ease;
-  }
-</style>

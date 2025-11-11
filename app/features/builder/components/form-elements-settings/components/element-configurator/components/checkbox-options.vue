@@ -42,7 +42,7 @@ const element = defineModel<ICheckbox>('element', { required: true })
         </div>
       </div>
       <div class="space-y-2">
-        <TransitionGroup name="list">
+        <TransitionGroup name="element">
           <Item
             v-for="(item, index) in element.options"
             :key="index"
