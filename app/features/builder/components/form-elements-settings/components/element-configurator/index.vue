@@ -1,6 +1,5 @@
 <script setup lang="ts">
-import type { Component } from 'vue'
-import { defineAsyncComponent } from 'vue'
+import { defineAsyncComponent, type Component } from 'vue'
 import { X } from "lucide-vue-next"
 
 import Badge from '@/components/atoms/badge.vue'
@@ -24,7 +23,7 @@ const elementConfigMap: Record<FormElementType, Component> = {
   inputPassword: defineAsyncComponent(() => import('./components/input-options.vue')),
   inputDate: defineAsyncComponent(() => import('./components/input-options.vue')),
   radio: defineAsyncComponent(() => import('./components/radio-options.vue')),
-//   toggle: defineAsyncComponent(() => import('./components/input-options.vue')),
+  toggle: defineAsyncComponent(() => import('./components/toggle-options.vue')),
 //   textarea: defineAsyncComponent(() => import('./components/input-options.vue')),
 //   checkbox: defineAsyncComponent(() => import('./components/input-options.vue')),
 //   select: defineAsyncComponent(() => import('./components/input-options.vue')),
