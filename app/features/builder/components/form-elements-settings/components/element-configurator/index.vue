@@ -8,7 +8,9 @@ import Item from '@/components/atoms/item.vue'
 import DragBox from '../drag-box.vue';
 import type { FormElement, FormElementType } from '../../../../types/form-element'
 
-type BaseStyleType = Exclude<FormElementType, 'spaceY' | 'separator'>
+type BaseType = Exclude<FormElementType, 'spaceY' | 'separator'>
+
+type SpecialStyleType = Extract<FormElementType, 'spaceY'>
 
 const element = defineModel<FormElement>('element', { required: true })
 
@@ -18,21 +20,19 @@ defineProps<{
 
 const emit = defineEmits(['deleteElement'])
 
-const elementConfigMap: Record<FormElementType, Component> = {
-  input: defineAsyncComponent(() => import('./components/input-options.vue')),
-  inputPassword: defineAsyncComponent(() => import('./components/input-options.vue')),
-  inputDate: defineAsyncComponent(() => import('./components/input-options.vue')),
-  radio: defineAsyncComponent(() => import('./components/radio-options.vue')),
-  toggle: defineAsyncComponent(() => import('./components/toggle-options.vue')),
-  textarea: defineAsyncComponent(() => import('./components/textarea-options.vue')),
-  checkbox: defineAsyncComponent(() => import('./components/checkbox-options.vue')),
-  select: defineAsyncComponent(() => import('./components/select-options.vue')),
-  uploadImg: defineAsyncComponent(() => import('./components/uploadImg-options.vue'))
-//   spaceY: defineAsyncComponent(() => import('./components/input-options.vue')),
-//   separator: defineAsyncComponent(() => import('./components/input-options.vue')),
+const elementConfigMap: Record<BaseType, Component> = {
+    input: defineAsyncComponent(() => import('./components/input-options.vue')),
+    inputPassword: defineAsyncComponent(() => import('./components/input-options.vue')),
+    inputDate: defineAsyncComponent(() => import('./components/input-options.vue')),
+    radio: defineAsyncComponent(() => import('./components/radio-options.vue')),
+    toggle: defineAsyncComponent(() => import('./components/toggle-options.vue')),
+    textarea: defineAsyncComponent(() => import('./components/textarea-options.vue')),
+    checkbox: defineAsyncComponent(() => import('./components/checkbox-options.vue')),
+    select: defineAsyncComponent(() => import('./components/select-options.vue')),
+    uploadImg: defineAsyncComponent(() => import('./components/uploadImg-options.vue'))
 }
 
-const baseStyleMap: Record<BaseStyleType, Component> = {
+const baseStyleMap: Record<BaseType, Component> = {
     input: defineAsyncComponent(()=> import('./components/base-style-options.vue')),
     inputPassword: defineAsyncComponent(()=> import('./components/base-style-options.vue')),
     inputDate: defineAsyncComponent(()=> import('./components/base-style-options.vue')),
@@ -42,6 +42,10 @@ const baseStyleMap: Record<BaseStyleType, Component> = {
     checkbox: defineAsyncComponent(()=> import('./components/base-style-options.vue')),
     select: defineAsyncComponent(()=> import('./components/base-style-options.vue')),
     uploadImg: defineAsyncComponent(()=> import('./components/base-style-options.vue')),
+}
+
+const specialStyleMap: Record<SpecialStyleType, Component> = {
+    spaceY: defineAsyncComponent(() => import('./components/spaceY-style-options.vue')),
 }
 </script>
 
@@ -68,17 +72,25 @@ const baseStyleMap: Record<BaseStyleType, Component> = {
                     </Button>
                 </template>
             </Item>
-            <div v-show="elementConfigMap[element.type]" class="mt-6">
+            <div v-show="elementConfigMap[element.type as BaseType]" class="mt-6">
                 <Badge class="py-2 px-3">基本設定</Badge>
                 <component
-                    :is="elementConfigMap[element.type]"
+                    :is="elementConfigMap[element.type as BaseType]"
                     v-model:element="element"
                 />
             </div>
-            <div v-show="baseStyleMap[element.type as BaseStyleType]" class="mt-6">
-                <Badge class="py-2 px-3">樣式設定</Badge>
+            <div v-show="baseStyleMap[element.type as BaseType]" class="mt-6">
+                <Badge class="py-2 px-3">基本樣式</Badge>
                 <component
-                    :is="baseStyleMap[element.type as BaseStyleType]"
+                    :is="baseStyleMap[element.type as BaseType]"
+                    v-model:element="element"
+                />
+                
+            </div>
+            <div v-show="specialStyleMap[element.type as SpecialStyleType]" class="mt-6">
+                <Badge class="py-2 px-3">特殊樣式</Badge>
+                <component
+                    :is="specialStyleMap[element.type as SpecialStyleType]"
                     v-model:element="element"
                 />
             </div>
