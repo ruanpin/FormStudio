@@ -85,7 +85,6 @@ const specialStyleMap: Record<SpecialStyleType, Component> = {
                     :is="baseStyleMap[element.type as BaseType]"
                     v-model:element="element"
                 />
-                
             </div>
             <div v-show="specialStyleMap[element.type as SpecialStyleType]" class="mt-6">
                 <Badge class="py-2 px-3">特殊樣式</Badge>
