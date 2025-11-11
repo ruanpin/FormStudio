@@ -27,7 +27,7 @@ const elementConfigMap: Record<FormElementType, Component> = {
   textarea: defineAsyncComponent(() => import('./components/textarea-options.vue')),
   checkbox: defineAsyncComponent(() => import('./components/checkbox-options.vue')),
   select: defineAsyncComponent(() => import('./components/select-options.vue')),
-//   uploadImg: defineAsyncComponent(() => import('./components/input-options.vue')),
+  uploadImg: defineAsyncComponent(() => import('./components/uploadImg-options.vue'))
 //   spaceY: defineAsyncComponent(() => import('./components/input-options.vue')),
 //   separator: defineAsyncComponent(() => import('./components/input-options.vue')),
 }
