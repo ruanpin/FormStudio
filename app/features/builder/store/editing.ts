@@ -18,8 +18,8 @@ export const useEditingStore = defineStore('editing', () => {
     const currentLayer = computed(() => {
         const traceLength = trace.value.length
 
-        if (traceLength && trace.value[traceLength]) {
-            return trace.value[traceLength].layerCache
+        if (traceLength > 0) {
+            return trace.value[traceLength - 1]!.layerCache
         }
 
         return root.value
