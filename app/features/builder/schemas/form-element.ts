@@ -18,11 +18,17 @@ export const SpaceY = (): Omit<ISpaceY, 'id'> => ({
   type: 'spaceY',
   class: {
     paddingY: ""
-  }
+  },
+  crType: "",
+  crTrigger: "",
+  crOperator: ""
 });
 
 export const Separator = (): Omit<ISeparator, 'id'> => ({
-  type: 'separator'
+  type: 'separator',
+  crType: "",
+  crTrigger: "",
+  crOperator: ""
 });
 
 export const BasicOption = (): Option => ({
@@ -43,7 +49,10 @@ export const Input = (): Omit<IInput, 'id'> => ({
     layoutFlex: "column"
   },
   placeholder: "",
-  crList: []
+  cr: [],
+  crType: "",
+  crTrigger: "",
+  crOperator: ""
 });
 
 export const InputPassword = (): Omit<IInputPassword, 'id'> => ({
@@ -58,7 +67,10 @@ export const InputPassword = (): Omit<IInputPassword, 'id'> => ({
     layoutFlex: "column"
   },
   limitWordsAmount: "",
-  crList: []
+  cr: [],
+  crType: "",
+  crTrigger: "",
+  crOperator: ""
 });
 
 export const InputDate = (): Omit<IInputDate, 'id'> => ({
@@ -72,7 +84,10 @@ export const InputDate = (): Omit<IInputDate, 'id'> => ({
   class: {
     layoutFlex: "column"
   },
-  crList: []
+  cr: [],
+  crType: "",
+  crTrigger: "",
+  crOperator: ""
 });
 
 export const Textarea = (): Omit<ITextarea, 'id'> => ({
@@ -88,7 +103,10 @@ export const Textarea = (): Omit<ITextarea, 'id'> => ({
   },
   limitWordsAmount: "",
   placeholder: "",
-  crList: []
+  cr: [],
+  crType: "",
+  crTrigger: "",
+  crOperator: ""
 });
 
 // ================== 選項類型元件工廠函數 ==================
@@ -104,7 +122,10 @@ export const Radio = (): Omit<IRadio, 'id'> => ({
     layoutFlex: "column"
   },
   options: [{ label: "", value: "" }],
-  crList: []
+  cr: [],
+  crType: "",
+  crTrigger: "",
+  crOperator: ""
 });
 
 export const Select = (): Omit<ISelect, 'id'> => ({
@@ -119,7 +140,10 @@ export const Select = (): Omit<ISelect, 'id'> => ({
     layoutFlex: "column"
   },
   options: [{ label: "", value: "" }],
-  crList: []
+  cr: [],
+  crType: "",
+  crTrigger: "",
+  crOperator: ""
 });
 
 // ================== 開關類型元件工廠函數 ==================
@@ -136,7 +160,10 @@ export const Toggle = (): Omit<IToggle, 'id'> => ({
   },
   truevalue: "",
   falsevalue: "",
-  crList: []
+  cr: [],
+  crType: "",
+  crTrigger: "",
+  crOperator: ""
 });
 
 // ================== 多選類型元件工廠函數 ==================
@@ -152,7 +179,10 @@ export const Checkbox = (): Omit<ICheckbox, 'id'> => ({
     layoutFlex: "column"
   },
   options: [{ label: "", value: "" }],
-  crList: []
+  cr: [],
+  crType: "",
+  crTrigger: "",
+  crOperator: ""
 });
 
 // ================== 上傳類型元件工廠函數 ==================
@@ -168,5 +198,8 @@ export const UploadImg = (): Omit<IUploadImg, 'id'> => ({
     layoutFlex: "column"
   },
   previewImgURL: "",
-  crList: []
+  cr: [],
+  crType: "",
+  crTrigger: "",
+  crOperator: ""
 });

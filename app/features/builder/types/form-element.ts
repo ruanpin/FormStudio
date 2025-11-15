@@ -34,7 +34,10 @@ interface BaseFormElement<T extends FormElementType = FormElementType> {
   field: string;
   required: boolean;
   class: LayoutClass;
-  crList: FormElement[];
+  cr: FormElement[];
+  crType: string;
+  crTrigger: any;
+  crOperator: string;
 }
 
 interface BaseInput<T extends FormElementType> extends BaseFormElement<T> {
@@ -74,11 +77,17 @@ export interface SpaceY {
   class: {
     paddingY: string;
   };
+  crType: string;
+  crTrigger: any;
+  crOperator: string;
 }
 
 export interface Separator {
   readonly id: string;
   readonly type: 'separator';
+  crType: string;
+  crTrigger: any;
+  crOperator: string;
 }
 
 // ================== 輸入類型元件 ==================
