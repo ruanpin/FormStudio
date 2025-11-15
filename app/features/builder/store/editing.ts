@@ -2,8 +2,10 @@ import { defineStore } from 'pinia';
 import type { FormElement } from '../types/form-element';
 
 interface Cache {
+    name: string;
+    type: string;
     path: string;
-    layerCache: FormElement[]
+    layerCache: FormElement[];
 }
 
 export const useEditingStore = defineStore('editing', () => {
@@ -34,6 +36,8 @@ export const useEditingStore = defineStore('editing', () => {
 
     const traceTransformer = (element: FormElement): Cache => {
         return {
+            name: (element as any).name,
+            type: element.type,
             path: getPath(element),
             layerCache: (element as any).cr
         }
@@ -43,10 +47,15 @@ export const useEditingStore = defineStore('editing', () => {
         trace.value.push(traceTransformer(element))
     }
 
+    const back = () => {
+        trace.value.pop()
+    }
+
     return {
         init,
         trace,
         currentLayer,
-        setTrace
+        setTrace,
+        back
     }
 })

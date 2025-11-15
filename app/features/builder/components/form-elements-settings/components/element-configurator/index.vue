@@ -10,6 +10,8 @@ import type { FormElement, FormElementType } from '../../../../types/form-elemen
 
 import { useEditingStore } from '../../../../store/editing';
 
+import { useTimeoutBoolean } from '../../../../composables/useTimeoutBoolean'
+
 type BaseType = Exclude<FormElementType, 'spaceY' | 'separator'>
 
 type SpecialStyleType = Extract<FormElementType, 'spaceY'>
@@ -23,6 +25,8 @@ defineProps<{
 const emit = defineEmits(['deleteElement'])
 
 const editingStore = useEditingStore()
+
+const timeoutBooleanContext = useTimeoutBoolean()
 
 const elementConfigMap: Record<BaseType, Component> = {
     input: defineAsyncComponent(() => import('./components/input-options.vue')),
@@ -56,6 +60,12 @@ const handleSetCR = (element: FormElement) => {
     if (!('cr' in element)) {
         throw new Error('the element does not have cr property')
     }
+
+    if (timeoutBooleanContext.value.value) {
+        return
+    }
+
+    timeoutBooleanContext.trigger()
     editingStore.setTrace(element)
 }
 </script>
