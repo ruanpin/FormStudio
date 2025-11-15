@@ -5,6 +5,8 @@ import FormElementsSettings from './components/form-elements-settings/form-eleme
 
 import type { FormConfig } from './types/form-config'
 
+import { useEditingStore } from './store/editing';
+
 const formConfig = ref<FormConfig>({
   render: [],
   submit: {
@@ -15,6 +17,12 @@ const formConfig = ref<FormConfig>({
     ask: false,
     payloadType: "form-data",
   }
+})
+
+const editingContext = useEditingStore()
+
+onMounted(() => {
+    editingContext.init(formConfig.value.render)
 })
 </script>
 
@@ -28,7 +36,7 @@ const formConfig = ref<FormConfig>({
         <div class="flex-1 border-2 border-gray-300 h-full overflow-auto">
             <ScrollArea class="w-full h-full">
                 <FormElementsSettings
-                    v-model:render="formConfig.render"
+                    v-model:render="editingContext.currentLayer"
                 />
             </ScrollArea>
         </div>
