@@ -19,10 +19,10 @@ const formConfig = ref<FormConfig>({
   }
 })
 
-const editingContext = useEditingStore()
+const editingStore = useEditingStore()
 
 onMounted(() => {
-    editingContext.init(formConfig.value.render)
+    editingStore.init(formConfig.value.render)
 })
 </script>
 
@@ -36,7 +36,7 @@ onMounted(() => {
         <div class="flex-1 border-2 border-gray-300 h-full overflow-auto">
             <ScrollArea class="w-full h-full">
                 <FormElementsSettings
-                    v-model:render="editingContext.currentLayer"
+                    v-model:render="editingStore.currentLayer"
                 />
             </ScrollArea>
         </div>

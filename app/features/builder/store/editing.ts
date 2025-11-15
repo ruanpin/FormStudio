@@ -6,11 +6,6 @@ interface Cache {
     layerCache: FormElement[]
 }
 
-interface SetTrace {
-    elementCache: FormElement;
-    cr: FormElement[]
-}
-
 export const useEditingStore = defineStore('editing', () => {
     const root = ref<FormElement[]>([])
     const trace = ref<Cache[]>([])
@@ -29,15 +24,23 @@ export const useEditingStore = defineStore('editing', () => {
         root.value = rootRender
     }
 
-    const traceTransformer = (elementCache: FormElement): Cache => {
+    const getPath = (element: FormElement): string => {
+        if (trace.value.length === 0) {
+            return element.id
+        }
+        const lastPath = trace.value[trace.value.length - 1]!.path
+        return `${lastPath}.${element.id}`
+    }
+
+    const traceTransformer = (element: FormElement): Cache => {
         return {
-            // path: ,
-            // layerCache:
+            path: getPath(element),
+            layerCache: (element as any).cr
         }
     }
 
-    const setTrace = ({ elementCache, cr }: SetTrace) => {
-        trace.value.push(traceTransformer(elementCache))
+    const setTrace = (element: FormElement) => {
+        trace.value.push(traceTransformer(element))
     }
 
     return {

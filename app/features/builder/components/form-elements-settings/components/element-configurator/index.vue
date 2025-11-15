@@ -8,6 +8,8 @@ import Item from '@/components/atoms/item.vue'
 import DragBox from '../drag-box.vue';
 import type { FormElement, FormElementType } from '../../../../types/form-element'
 
+import { useEditingStore } from '../../../../store/editing';
+
 type BaseType = Exclude<FormElementType, 'spaceY' | 'separator'>
 
 type SpecialStyleType = Extract<FormElementType, 'spaceY'>
@@ -19,6 +21,8 @@ defineProps<{
 }>()
 
 const emit = defineEmits(['deleteElement'])
+
+const editingStore = useEditingStore()
 
 const elementConfigMap: Record<BaseType, Component> = {
     input: defineAsyncComponent(() => import('./components/input-options.vue')),
@@ -46,6 +50,13 @@ const baseStyleMap: Record<BaseType, Component> = {
 
 const specialStyleMap: Record<SpecialStyleType, Component> = {
     spaceY: defineAsyncComponent(() => import('./components/style/spaceY-style-options.vue')),
+}
+
+const handleSetCR = (element: FormElement) => {
+    if (!('cr' in element)) {
+        throw new Error('the element does not have cr property')
+    }
+    editingStore.setTrace(element)
 }
 </script>
 
@@ -92,6 +103,14 @@ const specialStyleMap: Record<SpecialStyleType, Component> = {
                     :is="specialStyleMap[element.type as SpecialStyleType]"
                     v-model:element="element"
                 />
+            </div>
+            <div v-show="!['spaceY', 'separator'].includes(element.type)" class="mt-6">
+                <Button
+                    class="w-full"
+                    @click="() => handleSetCR(element)"
+                >
+                    條件渲染設定
+                </Button>
             </div>
         </div>
     </DragBox>
