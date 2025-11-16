@@ -1,0 +1,1 @@
+export type ElementCrTypes = 'input' | 'inputDate' | 'radio' | 'toggle' | 'checkbox' | 'select';

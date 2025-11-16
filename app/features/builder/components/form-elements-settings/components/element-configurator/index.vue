@@ -28,6 +28,15 @@ const editingStore = useEditingStore()
 
 const timeoutBooleanContext = useTimeoutBoolean()
 
+const isInCrSettings = computed(() => editingStore.trace.length)
+
+const fatherElement = computed(() => {
+    if (!isInCrSettings.value) {
+        return {}
+    }
+    return editingStore.trace[editingStore.trace.length - 1]!.element
+})
+
 const elementConfigMap: Record<BaseType, Component> = {
     input: defineAsyncComponent(() => import('./components/input-options.vue')),
     inputPassword: defineAsyncComponent(() => import('./components/input-options.vue')),
@@ -55,6 +64,8 @@ const baseStyleMap: Record<BaseType, Component> = {
 const specialStyleMap: Record<SpecialStyleType, Component> = {
     spaceY: defineAsyncComponent(() => import('./components/style/spaceY-style-options.vue')),
 }
+
+const ConditionalRenderingComponent: Component = defineAsyncComponent(() => import('../cr-configurator/index.vue'))
 
 const handleSetCR = (element: FormElement) => {
     if (!('cr' in element)) {
@@ -112,6 +123,14 @@ const handleSetCR = (element: FormElement) => {
                 <component
                     :is="specialStyleMap[element.type as SpecialStyleType]"
                     v-model:element="element"
+                />
+            </div>
+            <div v-if="isInCrSettings" class="mt-6">
+                <Badge class="py-2 px-3">條件渲染</Badge>
+                <component
+                    :is="ConditionalRenderingComponent"
+                    v-model:element="element"
+                    :father-element="fatherElement"
                 />
             </div>
             <div v-show="!['spaceY', 'separator'].includes(element.type)" class="mt-6">

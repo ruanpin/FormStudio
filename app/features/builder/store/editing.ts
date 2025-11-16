@@ -2,8 +2,9 @@ import { defineStore } from 'pinia';
 import type { FormElement } from '../types/form-element';
 
 interface Cache {
-    name: string;
-    type: string;
+    readonly name: string;
+    readonly type: string;
+    readonly element: FormElement;
     path: string;
     layerCache: FormElement[];
 }
@@ -38,6 +39,7 @@ export const useEditingStore = defineStore('editing', () => {
         return {
             name: (element as any).name,
             type: element.type,
+            element,
             path: getPath(element),
             layerCache: (element as any).cr
         }
