@@ -1,9 +1,10 @@
 <script setup lang="ts">
 import { defineAsyncComponent } from 'vue'
 import Select from '@/components/atoms/select.vue';
+import FatherElementInfo from './components/father-info.vue';
 
 import type { FormElement } from '../../../../types/form-element'
-import type { ElementCrTypes } from '../../../../types/conditional-rendering'
+import type { ElementCrTypes, CrElement } from '../../../../types/conditional-rendering'
 
 import { CR_TYPES } from './constants'
 
@@ -12,12 +13,6 @@ const element = defineModel<FormElement>('element', { required: true })
 defineProps<{
     fatherElement: FormElement
 }>()
-
-const cr_triggerMap = {
-//   pureValue: defineAsyncComponent(()=> import('./components/PureValue/index.vue')),
-//   multipleValuesInArray: defineAsyncComponent(()=> import('./components/MultipleValuesInArray/index.vue')),
-//   age: defineAsyncComponent(()=> import('./components/Age/index.vue')),
-}
 
 const elementCrTypesMap: Record<ElementCrTypes, Record<'label' | 'value', string>[]> = {
   input: CR_TYPES['INPUT'],
@@ -30,18 +25,25 @@ const elementCrTypesMap: Record<ElementCrTypes, Record<'label' | 'value', string
   select: CR_TYPES['INPUT'],
   // uploadImg: false,
 }
+
+const crTypesMap = {
+//   pureValue: defineAsyncComponent(()=> import('./components/PureValue/index.vue')),
+//   multipleValuesInArray: defineAsyncComponent(()=> import('./components/MultipleValuesInArray/index.vue')),
+//   age: defineAsyncComponent(()=> import('./components/Age/index.vue')),
+}
 </script>
 
 <template>
-    <div class="q-gutter-md">
+    <div class="">
+      <FatherElementInfo :father-element="fatherElement as CrElement" />
       <div>
-        <div class="options-title">條件渲染類型(cr_type)</div>
+        <div class="text-4 font-bold">條件渲染類型(cr_type)</div>
         <Select v-model="element.crType" :options="elementCrTypesMap[fatherElement.type as ElementCrTypes]" />
       </div>
       <!-- <component
-        :is="cr_triggerMapping[formObj.cr_type]"
-        :formObj="formObj"
-        :formObjOfFather="formObjOfFather"
+        :is="crTypesMap[element.crType]"
+        :element="element"
+        :fatherElement="fatherElement"
       /> -->
     </div>
 </template>

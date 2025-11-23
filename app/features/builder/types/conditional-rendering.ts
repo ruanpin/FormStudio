@@ -1,1 +1,5 @@
+import type { Input, InputDate, Radio, Toggle, Checkbox, Select } from './form-element'
+
 export type ElementCrTypes = 'input' | 'inputDate' | 'radio' | 'toggle' | 'checkbox' | 'select';
+
+export type CrElement = Input | InputDate | Radio | Toggle | Checkbox | Select;
