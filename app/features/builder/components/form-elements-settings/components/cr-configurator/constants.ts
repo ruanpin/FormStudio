@@ -9,3 +9,23 @@ export const CR_TYPES = {
         { label: '選項包含', value: 'multipleValuesInArray' },
     ]
 }
+
+export const CR_OPERATION_TYPE = {
+    input: [
+        { label: '相等', value: 'equalTo' },
+    ],
+    inputDate: [
+        { label: '相等', value: 'equalTo' },
+        { label: '大於等於', value: 'greaterThanOrEqualTo' },
+        { label: '小於等於', value: 'lessThanOrEqual' },
+    ],
+    radio: [
+        { label: '相等', value: 'equalTo' },
+    ],
+    toggle: [
+        { label: '相等', value: 'equalTo' },
+    ],
+    select: [
+        { label: '相等', value: 'equalTo' },
+    ]
+}

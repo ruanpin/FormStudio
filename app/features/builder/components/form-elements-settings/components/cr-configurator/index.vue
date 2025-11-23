@@ -27,23 +27,23 @@ const elementCrTypesMap: Record<ElementCrTypes, Record<'label' | 'value', string
 }
 
 const crTypesMap = {
-//   pureValue: defineAsyncComponent(()=> import('./components/PureValue/index.vue')),
+  pureValue: defineAsyncComponent(()=> import('./components/pure-value/index.vue')),
 //   multipleValuesInArray: defineAsyncComponent(()=> import('./components/MultipleValuesInArray/index.vue')),
 //   age: defineAsyncComponent(()=> import('./components/Age/index.vue')),
 }
 </script>
 
 <template>
-    <div class="">
+    <div>
       <FatherElementInfo :father-element="fatherElement as CrElement" />
       <div>
-        <div class="text-4 font-bold">條件渲染類型(cr_type)</div>
+        <div class="text-4 font-bold">條件渲染類型(crType)</div>
         <Select v-model="element.crType" :options="elementCrTypesMap[fatherElement.type as ElementCrTypes]" />
-      </div>
-      <!-- <component
+      </div>{{ fatherElement }}
+      <component
         :is="crTypesMap[element.crType]"
         :element="element"
-        :fatherElement="fatherElement"
-      /> -->
+        :father-element="fatherElement"
+      />
     </div>
 </template>
