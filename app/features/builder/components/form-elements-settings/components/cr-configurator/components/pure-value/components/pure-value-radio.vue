@@ -1,13 +1,14 @@
 <script setup lang="ts">
 import Select from '@/components/atoms/select.vue';
-import Input from '@/components/atoms/input.vue';
-import type { FormElement, Input as IInput } from '../../../../../../../types/form-element'
+import RadioGroup from '@/components/atoms/radio-group.vue';
+
+import type { FormElement, Radio as IRadio } from '../../../../../../../types/form-element'
 import type { PureValueType } from '../../../../../../../types/conditional-rendering'
 import { CR_OPERATION_TYPE } from '../../../constants'
 
 defineProps<{
     element: FormElement,
-    fatherElement: IInput
+    fatherElement: IRadio
 }>()
 </script>
 
@@ -21,6 +22,11 @@ defineProps<{
     </div>
     <div>
         <div class="font-bold">條件渲染觸發值(crTrigger)</div>
-        <Input v-model="element.crTrigger" placeholder="輸入觸發值" />
+        <div class="text-gray-300">觸發條件：父元素的值必須為此處所選擇的值</div>
+        <RadioGroup
+            v-model="element.crTrigger"
+            group-class="flex"
+            :options="fatherElement.options"
+        />
     </div>
 </template>
