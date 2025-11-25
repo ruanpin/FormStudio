@@ -2,6 +2,7 @@
 import { defineAsyncComponent } from 'vue'
 import type { FormElement } from '../../../../../../types/form-element'
 import type { CrElement, PureValueType } from '../../../../../../types/conditional-rendering'
+
 defineProps<{
     element: FormElement,
     fatherElement: CrElement
@@ -18,6 +19,6 @@ const crTypesMap = {
     <component
         :is="crTypesMap[fatherElement.type as PureValueType]"
         :element="element"
-        :father-element="fatherElement"
+        :father-element="fatherElement as any"
     />
 </template>

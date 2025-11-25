@@ -11,7 +11,7 @@ import { CR_TYPES } from './constants'
 const element = defineModel<FormElement>('element', { required: true })
 
 defineProps<{
-    fatherElement: FormElement
+    fatherElement: CrElement
 }>()
 
 const elementCrTypesMap: Record<ElementCrTypes, Record<'label' | 'value', string>[]> = {
