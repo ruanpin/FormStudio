@@ -9,7 +9,7 @@ defineProps<{
 const crTypesMap = {
   input: defineAsyncComponent(() => import('./components/pure-value-input.vue')),
   radio: defineAsyncComponent(() => import('./components/pure-value-radio.vue')),
-//   toggle: defineAsyncComponent(() => import('./components/pure-value-toggle.vue')),
+  toggle: defineAsyncComponent(() => import('./components/pure-value-toggle.vue')),
   select: defineAsyncComponent(() => import('./components/pure-value-select.vue')),
 }
 </script>
