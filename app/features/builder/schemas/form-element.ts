@@ -181,7 +181,7 @@ export const Checkbox = (): Omit<ICheckbox, 'id'> => ({
   options: [{ label: "", value: "" }],
   cr: [],
   crType: "",
-  crTrigger: "",
+  crTrigger: [],
   crOperator: ""
 });
 

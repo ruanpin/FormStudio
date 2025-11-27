@@ -28,7 +28,7 @@ const elementCrTypesMap: Record<ElementCrTypes, Record<'label' | 'value', string
 
 const crTypesMap = {
   pureValue: defineAsyncComponent(()=> import('./components/pure-value/index.vue')),
-//   multipleValuesInArray: defineAsyncComponent(()=> import('./components/MultipleValuesInArray/index.vue')),
+  multipleValuesInArray: defineAsyncComponent(()=> import('./components/multiple-values-in-array/index.vue')),
 //   age: defineAsyncComponent(()=> import('./components/Age/index.vue')),
 }
 </script>
