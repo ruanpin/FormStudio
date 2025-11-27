@@ -25,11 +25,17 @@ const updateModelValue = (val: boolean, option: Option<T>) => {
 }
 </script>
 
-<template>{{ checkbox }}
-    <label v-for="option in options" class="cursor-pointer">
-        <Checkbox v-bind="$attrs" @update:modelValue="(val) => updateModelValue(val as boolean, option)"/>
-        <slot :option="option">
-            {{ option.label }}
-        </slot>
-    </label>
+<template>
+    <div
+        v-for="(option, index) in options"
+        :key="index"
+        class="flex"
+    >
+        <label class="flex items-center gap-1 cursor-pointer">
+            <Checkbox @update:modelValue="(val) => updateModelValue(val as boolean, option)" />
+            <slot :option="option">
+                {{ option.label }}
+            </slot>
+        </label>
+    </div>
 </template>
