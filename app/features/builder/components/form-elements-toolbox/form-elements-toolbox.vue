@@ -17,17 +17,17 @@ import {
 } from '../../schemas/form-element'
 
 const formElements = ref<FormElement[]>([
-    SpaceY(),
-    Separator(),
-    Input(),
-    InputPassword(),
-    InputDate(),
-    Textarea(),
-    Radio(),
-    Select(),
-    Toggle(),
-    Checkbox(),
-    UploadImg()
+    { ...SpaceY({}), id: 'template-spaceY' },
+    { ...Separator({}), id: 'template-separator' },
+    { ...Input({}), id: 'template-input' },
+    { ...InputPassword({}), id: 'template-inputPassword' },
+    { ...InputDate({}), id: 'template-inputDate' },
+    { ...Textarea({}), id: 'template-textarea' },
+    { ...Radio({}), id: 'template-radio' },
+    { ...Select({}), id: 'template-select' },
+    { ...Toggle({}), id: 'template-toggle' },
+    { ...Checkbox({}), id: 'template-checkbox' },
+    { ...UploadImg({}), id: 'template-uploadImg' }
 ])
 
 const searchInput = ref<string>("")

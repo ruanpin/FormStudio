@@ -14,20 +14,20 @@ import type {
 } from '../types/form-element';
 
 // ================== 特殊元件工廠函數 ==================
-export const SpaceY = (): Omit<ISpaceY, 'id'> => ({
+export const SpaceY = ({ crTrigger = "" }): Omit<ISpaceY, 'id'> => ({
   type: 'spaceY',
   class: {
     paddingY: ""
   },
   crType: "",
-  crTrigger: "",
+  crTrigger,
   crOperator: ""
 });
 
-export const Separator = (): Omit<ISeparator, 'id'> => ({
+export const Separator = ({ crTrigger = "" }): Omit<ISeparator, 'id'> => ({
   type: 'separator',
   crType: "",
-  crTrigger: "",
+  crTrigger,
   crOperator: ""
 });
 
@@ -37,7 +37,7 @@ export const BasicOption = (): Option => ({
 });
 
 // ================== 輸入類型元件工廠函數 ==================
-export const Input = (): Omit<IInput, 'id'> => ({
+export const Input = ({ crTrigger = "" }): Omit<IInput, 'id'> => ({
   type: 'input',
   name: "",
   label: "",
@@ -51,11 +51,11 @@ export const Input = (): Omit<IInput, 'id'> => ({
   placeholder: "",
   cr: [],
   crType: "",
-  crTrigger: "",
+  crTrigger,
   crOperator: ""
 });
 
-export const InputPassword = (): Omit<IInputPassword, 'id'> => ({
+export const InputPassword = ({ crTrigger = "" }): Omit<IInputPassword, 'id'> => ({
   type: 'inputPassword',
   name: "",
   label: "",
@@ -69,11 +69,11 @@ export const InputPassword = (): Omit<IInputPassword, 'id'> => ({
   limitWordsAmount: "",
   cr: [],
   crType: "",
-  crTrigger: "",
+  crTrigger,
   crOperator: ""
 });
 
-export const InputDate = (): Omit<IInputDate, 'id'> => ({
+export const InputDate = ({ crTrigger = "" }): Omit<IInputDate, 'id'> => ({
   type: 'inputDate',
   name: "",
   label: "",
@@ -86,11 +86,11 @@ export const InputDate = (): Omit<IInputDate, 'id'> => ({
   },
   cr: [],
   crType: "",
-  crTrigger: "",
+  crTrigger,
   crOperator: ""
 });
 
-export const Textarea = (): Omit<ITextarea, 'id'> => ({
+export const Textarea = ({ crTrigger = "" }): Omit<ITextarea, 'id'> => ({
   type: 'textarea',
   name: "",
   label: "",
@@ -105,12 +105,12 @@ export const Textarea = (): Omit<ITextarea, 'id'> => ({
   placeholder: "",
   cr: [],
   crType: "",
-  crTrigger: "",
+  crTrigger,
   crOperator: ""
 });
 
 // ================== 選項類型元件工廠函數 ==================
-export const Radio = (): Omit<IRadio, 'id'> => ({
+export const Radio = ({ crTrigger = "" }): Omit<IRadio, 'id'> => ({
   type: 'radio',
   name: "",
   label: "",
@@ -124,11 +124,11 @@ export const Radio = (): Omit<IRadio, 'id'> => ({
   options: [{ label: "", value: "" }],
   cr: [],
   crType: "",
-  crTrigger: "",
+  crTrigger,
   crOperator: ""
 });
 
-export const Select = (): Omit<ISelect, 'id'> => ({
+export const Select = ({ crTrigger = "" }): Omit<ISelect, 'id'> => ({
   type: 'select',
   name: "",
   label: "",
@@ -142,12 +142,12 @@ export const Select = (): Omit<ISelect, 'id'> => ({
   options: [{ label: "", value: "" }],
   cr: [],
   crType: "",
-  crTrigger: "",
+  crTrigger,
   crOperator: ""
 });
 
 // ================== 開關類型元件工廠函數 ==================
-export const Toggle = (): Omit<IToggle, 'id'> => ({
+export const Toggle = ({ crTrigger = "" }): Omit<IToggle, 'id'> => ({
   type: 'toggle',
   name: "",
   label: "",
@@ -162,12 +162,12 @@ export const Toggle = (): Omit<IToggle, 'id'> => ({
   falsevalue: "",
   cr: [],
   crType: "",
-  crTrigger: "",
+  crTrigger,
   crOperator: ""
 });
 
 // ================== 多選類型元件工廠函數 ==================
-export const Checkbox = (): Omit<ICheckbox, 'id'> => ({
+export const Checkbox = ({ crTrigger = "" }): Omit<ICheckbox, 'id'> => ({
   type: 'checkbox',
   name: "",
   label: "",
@@ -181,12 +181,12 @@ export const Checkbox = (): Omit<ICheckbox, 'id'> => ({
   options: [{ label: "", value: "" }],
   cr: [],
   crType: "",
-  crTrigger: [],
+  crTrigger,
   crOperator: ""
 });
 
 // ================== 上傳類型元件工廠函數 ==================
-export const UploadImg = (): Omit<IUploadImg, 'id'> => ({
+export const UploadImg = ({ crTrigger = "" }): Omit<IUploadImg, 'id'> => ({
   type: 'uploadImg',
   name: "",
   label: "",
@@ -200,6 +200,6 @@ export const UploadImg = (): Omit<IUploadImg, 'id'> => ({
   previewImgURL: "",
   cr: [],
   crType: "",
-  crTrigger: "",
+  crTrigger,
   crOperator: ""
 });

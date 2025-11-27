@@ -1,7 +1,7 @@
 import { defineStore } from 'pinia';
 import type { FormElement } from '../types/form-element';
 
-interface Cache {
+export interface Cache {
     readonly name: string;
     readonly type: string;
     readonly element: FormElement;
