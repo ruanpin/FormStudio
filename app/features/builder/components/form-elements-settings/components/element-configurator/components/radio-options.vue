@@ -6,7 +6,7 @@ import Input from '@/components/atoms/input.vue';
 import Button from '@/components/atoms/button.vue';
 import Item from '@/components/atoms/item.vue'
 
-import { updateOptions } from '../../../../../utils/tools'
+import { updateOptions } from '../../../../../utils/option-manager'
 import type { Radio as IRadio } from '../../../../../types/form-element';
 
 const element = defineModel<IRadio>('element', { required: true })

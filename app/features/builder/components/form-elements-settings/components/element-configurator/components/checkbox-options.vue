@@ -6,7 +6,7 @@ import Input from '@/components/atoms/input.vue';
 import Button from '@/components/atoms/button.vue';
 import Item from '@/components/atoms/item.vue'
 
-import { updateOptions } from '../../../../../utils/tools'
+import { updateOptions } from '../../../../../utils/option-manager'
 import type { Checkbox as ICheckbox } from '../../../../../types/form-element';
 
 const element = defineModel<ICheckbox>('element', { required: true })
