@@ -2,6 +2,7 @@
 import { SidebarProvider, SidebarTrigger, SidebarInset } from "@/components/ui/sidebar"
 import AppSidebar from "@/components/layouts/app-sidebar.vue"
 import Button from "@/components/atoms/button.vue"
+import { Copy } from 'lucide-vue-next'
 import { useFormStatesStore } from '@/features/builder'
 
 const formStatesStore = useFormStatesStore()
@@ -11,9 +12,11 @@ const formStatesStore = useFormStatesStore()
     <SidebarProvider class="h-screen overflow-hidden">
         <AppSidebar />
         <SidebarInset class="h-full overflow-hidden">
-            <div>
+            <div class="px-4 gap-1">
                 <SidebarTrigger />
-                <Button @click="() => formStatesStore.clickToCopy()">複製</Button>
+                <Button variant="ghost" size="sm" @click="() => formStatesStore.clickToCopy()">
+                    <Copy :size="14" />
+                </Button>
             </div>
             <slot />
         </SidebarInset>
