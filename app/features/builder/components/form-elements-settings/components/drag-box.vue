@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useDraggingStore } from '@/store/drag'
+import { useDraggingStore } from '../../../store/drag'
 
 const draggingStore = useDraggingStore()
 
