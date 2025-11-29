@@ -1,28 +1,18 @@
 <script setup lang="ts">
+import 'vue-sonner/style.css'
+import { Toaster } from '@/components/ui/sonner'
 import { ScrollArea } from '@/components/ui/scroll-area'
 import FormElementsToolbox from './components/form-elements-toolbox/form-elements-toolbox.vue';
 import FormElementsSettings from './components/form-elements-settings/form-elements-settings.vue';
 
-import type { FormConfig } from './types/form-config'
-
+import { useFormStatesStore } from './store/form-states';
 import { useEditingStore } from './store/editing';
 
-const formConfig = ref<FormConfig>({
-  render: [],
-  submit: {
-    method: "POST",
-    urls: [
-      { url: "firstUrl" },
-    ],
-    ask: false,
-    payloadType: "form-data",
-  }
-})
-
+const { formConfig } = useFormStatesStore()
 const editingStore = useEditingStore()
 
 onMounted(() => {
-    editingStore.init(formConfig.value.render)
+    editingStore.init(formConfig.render)
 })
 </script>
 
@@ -40,5 +30,6 @@ onMounted(() => {
                 />
             </ScrollArea>
         </div>
+        <Toaster />
     </div>
 </template>
