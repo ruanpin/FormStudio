@@ -4,7 +4,7 @@ import Select from '@/components/atoms/select.vue';
 import FatherElementInfo from './components/father-info.vue';
 
 import type { FormElement } from '../../../../types/form-element'
-import type { ElementCrTypes, CrElement } from '../../../../types/conditional-rendering'
+import type { ElementCrTypes, CrElement, CrTypesValues } from '../../../../types/conditional-rendering'
 
 import { CR_TYPES } from './constants'
 
@@ -16,20 +16,17 @@ defineProps<{
 
 const elementCrTypesMap: Record<ElementCrTypes, Record<'label' | 'value', string>[]> = {
   input: CR_TYPES['INPUT'],
-  // input_password: false,
   inputDate: CR_TYPES['INPUT_DATE'],
   radio: CR_TYPES['INPUT'],
   toggle: CR_TYPES['INPUT'],
-  // textarea: false,
   checkbox: CR_TYPES['CHECKBOX'],
   select: CR_TYPES['INPUT'],
-  // uploadImg: false,
 }
 
 const crTypesMap = {
   pureValue: defineAsyncComponent(()=> import('./components/pure-value/index.vue')),
   multipleValuesInArray: defineAsyncComponent(()=> import('./components/multiple-values-in-array/index.vue')),
-//   age: defineAsyncComponent(()=> import('./components/Age/index.vue')),
+  age: defineAsyncComponent(()=> import('./components/age/index.vue')),
 }
 </script>
 
@@ -41,7 +38,7 @@ const crTypesMap = {
         <Select v-model="element.crType" :options="elementCrTypesMap[fatherElement.type as ElementCrTypes]" />
       </div>{{ fatherElement }}
       <component
-        :is="crTypesMap[element.crType]"
+        :is="crTypesMap[element.crType as CrTypesValues]"
         :element="element"
         :father-element="fatherElement"
       />

@@ -10,6 +10,8 @@ export const CR_TYPES = {
     ]
 }
 
+export const CR_TYPES_VALUES = Object.values(CR_TYPES).flat().map(({ value }) => value)
+
 export const CR_OPERATION_TYPE = {
     input: [
         { label: '相等', value: 'equalTo' },
