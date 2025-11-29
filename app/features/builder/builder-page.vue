@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import 'vue-sonner/style.css'
-import { Toaster } from '@/components/ui/sonner'
 import { ScrollArea } from '@/components/ui/scroll-area'
 import FormElementsToolbox from './components/form-elements-toolbox/form-elements-toolbox.vue';
 import FormElementsSettings from './components/form-elements-settings/form-elements-settings.vue';
@@ -30,6 +28,5 @@ onMounted(() => {
                 />
             </ScrollArea>
         </div>
-        <Toaster />
     </div>
 </template>

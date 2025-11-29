@@ -3,6 +3,7 @@ export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
   devtools: { enabled: true },
   css: [
+    'vue-sonner/style.css',
     '~/assets/css/tailwind.css',
     '~/assets/css/shadcn.css',
     '~/assets/css/sidebar.css',
