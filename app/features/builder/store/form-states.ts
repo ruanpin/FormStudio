@@ -16,15 +16,12 @@ export const useFormStatesStore = defineStore('formStates', () => {
     })
 
     const clickToCopy = async () => {
-        console.log('trigger copy');
         const text = JSON.stringify(formConfig.value)
         const success = await copyToClipboard(text)
-        
+
         if (success) {
-            console.log('copy success');
             toast.success('複製成功')
         } else {
-            console.log('copy failed');
             toast.error('複製失敗')
         }
     }
