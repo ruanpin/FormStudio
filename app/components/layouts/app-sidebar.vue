@@ -13,6 +13,7 @@ import {
 import { Cuboid, ScanEye } from "lucide-vue-next"
 
 const { isMobile, setOpenMobile } = useSidebar()
+const route = useRoute()
 
 const items = [
   {
@@ -43,7 +44,7 @@ const handleNavItemClick = () => {
         <SidebarGroupContent>
           <SidebarMenu>
             <SidebarMenuItem v-for="item in items" :key="item.title">
-              <SidebarMenuButton as-child>
+              <SidebarMenuButton as-child :class="{ 'bg-gray-200': route.path.includes(item.url) }">
                   <NuxtLink :prefetch="false" :to="item.url" @click="handleNavItemClick">
                     <component :is="item.icon" />
                     <span>{{item.title}}</span>
