@@ -10,10 +10,14 @@ defineProps<{
     tabs: Tab[];
     defaultTab: string;
 }>()
+
+defineOptions({
+    inheritAttrs: false
+})
 </script>
 
 <template>
-    <Tabs :default-value="defaultTab">
+    <Tabs :default-value="defaultTab" v-bind="$attrs" class="flex flex-col">
         <TabsList>
             <TabsTrigger
                 v-for="tab in tabs"
@@ -27,6 +31,7 @@ defineProps<{
             v-for="tab in tabs"
             :key="tab.value"
             :value="tab.value"
+            class="flex-1 overflow-hidden"
         >
             <slot :name="tab.value" />
         </TabsContent>
