@@ -18,15 +18,18 @@ defineOptions({
 
 <template>
     <Tabs :default-value="defaultTab" v-bind="$attrs" class="flex flex-col">
-        <TabsList>
-            <TabsTrigger
-                v-for="tab in tabs"
-                :key="tab.value"
-                :value="tab.value"
-            >
-                {{ tab.label }}
-            </TabsTrigger>
-        </TabsList>
+        <div class="flex items-center">
+            <TabsList>
+                <TabsTrigger
+                    v-for="tab in tabs"
+                    :key="tab.value"
+                    :value="tab.value"
+                >
+                    {{ tab.label }}
+                </TabsTrigger>
+            </TabsList>
+            <slot name="tab-side" />
+        </div>
         <TabsContent
             v-for="tab in tabs"
             :key="tab.value"
