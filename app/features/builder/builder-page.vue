@@ -4,10 +4,10 @@ import { Copy } from 'lucide-vue-next'
 import Tabs from '@/components/atoms/tabs.vue'
 import Button from "@/components/atoms/button.vue"
 
+import { useFormStatesStore } from './store/form-states'
+
 import FormElementBuilder from './views/form-element-builder.vue';
 import HTTPRequestSettings from './views/HTTP-request-settings.vue';
-
-import { useFormStatesStore } from './store/form-states'
 
 const formStatesStore = useFormStatesStore()
 
