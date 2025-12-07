@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { Plus, Trash } from "lucide-vue-next"
+import type { AcceptableValue } from 'reka-ui'
 
 import Item from '@/components/atoms/item.vue'
 import Select from '@/components/atoms/select.vue';
@@ -53,6 +54,15 @@ const addUrl = (arr: Url[]) => {
 const deleteUrl = (arr: Url[], index: number) => {
     arr.splice(index, 1)
 }
+
+const handleResetPayloadType = (val: AcceptableValue) => {
+    if (!val || typeof val !== 'string') return;
+    
+    const isValueInList = PAYLOAD_TYPES[val as keyof typeof PAYLOAD_TYPES]?.find(type => type.value === formConfig.submit.payloadType)
+    if (!isValueInList) {
+        formConfig.submit.payloadType = ""
+    }
+}
 </script>
 
 <template>
@@ -73,6 +83,7 @@ const deleteUrl = (arr: Url[], index: number) => {
                 <Select
                     v-model="formConfig.submit.method"
                     :options="HTTP_METHODS"
+                    @update:modelValue="handleResetPayloadType"
                 />
             </div>
             <div>
