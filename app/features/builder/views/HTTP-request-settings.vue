@@ -20,22 +20,25 @@ const HTTP_METHODS = ref([
   { label: 'PUT', value: 'PUT' },
   { label: 'DELETE', value: 'DELETE' },
 ])
+
 const PAYLOAD_TYPES = {
   GET: [
     { label: 'params', value: 'params' },
   ],
   POST: [
-    { label: 'form-data', value: 'form' },
+    { label: 'application/json', value: 'application/json' },
+    { label: 'form-data', value: 'form-data' },
   ],
   PUT: [
-    { label: 'form-data', value: 'form' },
+    { label: 'application/json', value: 'application/json' },
+    { label: 'form-data', value: 'form-data' },
   ],
   DELETE: [
-    { label: 'form-data', value: 'form' },
     { label: 'params', value: 'params' },
+    { label: 'application/json', value: 'application/json' },
+    { label: 'form-data', value: 'form-data' },
   ]
 }
-const emptyList = ["請先選擇HTTP Request方法"]
 
 const targetApiUrl = computed(() => {
   return formConfig.submit.urls.map(e => e.url).join('/')
@@ -76,7 +79,8 @@ const deleteUrl = (arr: Url[], index: number) => {
                 <div class="font-bold">payload類別(payload type)</div>
                 <Select
                     v-model="formConfig.submit.payloadType"
-                    :options="PAYLOAD_TYPES?.[formConfig.submit.method] || emptyList"
+                    :options="PAYLOAD_TYPES?.[formConfig.submit.method]"
+                    :placeholder="!PAYLOAD_TYPES?.[formConfig.submit.method] ? 'Please select HTTP method' : 'Please select...'"
                 />
             </div>
             <div class="font-bold flex items-center">
