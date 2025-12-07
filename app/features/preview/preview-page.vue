@@ -11,7 +11,7 @@ const props = defineProps<{
 const componentsRendering = {
   spaceY: defineAsyncComponent(()=> import('./components/spaceY.vue')),
   separator: defineAsyncComponent(()=> import('./components/separator.vue')),
-//   input: defineAsyncComponent(()=> import('./components/Input/index.vue')),
+  input: defineAsyncComponent(()=> import('./components/input.vue')),
 //   input_password: defineAsyncComponent(()=> import('./components/InputPassword/index.vue')),
 //   input_date: defineAsyncComponent(()=> import('./components/InputDate/index.vue')),
 //   radio: defineAsyncComponent(()=> import('./components/Radio/index.vue')),
@@ -33,7 +33,7 @@ const componentsRendering = {
                 <div class="col">
                     <component
                         :is="componentsRendering[element.type as FormElementType]"
-                        :element="element"
+                        v-model:element="formConfig.render[index]"
                         @updateCrObjectToRenderList="updateCrObjectToRenderList"
                     />
                 </div>
@@ -41,3 +41,14 @@ const componentsRendering = {
         </template>
     </div>
 </template>
+
+<style scoped>
+    :deep(.layout-flex-row) {
+        display: flex;
+        align-items: center;
+    }
+    :deep(.layout-flex-column) {
+        display: flex;
+        flex-direction: column;
+    }
+</style>
