@@ -6,7 +6,7 @@ interface Urls {
 
 type Method = 'GET' | 'POST' | 'PUT' | 'DELETE';
 
-type PayloadType = 'form-data' | 'json';
+type PayloadType = 'params' | 'form-data' | 'application/json' | "";
 
 interface Submit {
     method: Method,
