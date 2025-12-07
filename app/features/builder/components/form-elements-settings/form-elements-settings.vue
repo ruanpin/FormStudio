@@ -1,0 +1,60 @@
+<script setup lang="ts">
+import { nanoid } from 'nanoid'
+
+import DropBox from './components/drop-box.vue';
+import ElementConfigurator from './components/element-configurator/index.vue';
+
+import type { FormElement } from '../../types/form-element'
+
+const renderContainer = defineModel<FormElement[]>('render', { required: true })
+
+const handleDroppedCreate = ({ index, element }: { index: number; element: FormElement }) => {
+  // 為新創建的元素添加唯一 ID
+  const elementWithId = { ...element, id: nanoid() }
+  renderContainer.value.splice(index, 0, elementWithId)
+}
+
+const handleDroppedReorder = ({ sourceIndex, targetIndex }: { sourceIndex: number; targetIndex: number }) => {
+  // 相同位置不需要處理
+  if (sourceIndex === targetIndex) return
+  
+  // 從原位置移除元素
+  const [item] = renderContainer.value.splice(sourceIndex, 1)
+  if (!item) return
+  
+  // 向下移動時需要補償索引偏移（因為splice已刪除元素）
+  const adjustedIndex = sourceIndex < targetIndex ? targetIndex - 1 : targetIndex
+  renderContainer.value.splice(adjustedIndex, 0, item)
+}
+
+const handleDeleteElement = (sourceIndex: number) => {
+  renderContainer.value.splice(sourceIndex, 1)
+}
+</script>
+
+<template>
+    <div class="p-3 flex-col">
+      <DropBox
+        :drop-index="0"
+        @dropped-create="handleDroppedCreate"
+        @dropped-reorder="handleDroppedReorder"
+      />
+      <TransitionGroup name="element">
+        <div
+          v-for="(element, index) in renderContainer"
+          :key="element.id"
+        >
+          <ElementConfigurator
+            v-model:element="renderContainer[index]!"
+            :source-index="index"
+            @delete-element="handleDeleteElement"
+          />
+          <DropBox
+            :drop-index="index + 1"
+            @dropped-create="handleDroppedCreate"
+            @dropped-reorder="handleDroppedReorder"
+          />
+        </div>
+      </TransitionGroup>
+    </div>
+</template>

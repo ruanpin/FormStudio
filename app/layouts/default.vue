@@ -4,10 +4,12 @@ import AppSidebar from "@/components/layouts/app-sidebar.vue"
 </script>
 
 <template>
-    <SidebarProvider>
+    <SidebarProvider class="h-screen overflow-hidden">
         <AppSidebar />
-        <SidebarInset>
-            <SidebarTrigger />
+        <SidebarInset class="h-full overflow-hidden">
+            <div class="px-4 gap-1">
+                <SidebarTrigger />
+            </div>
             <slot />
         </SidebarInset>
     </SidebarProvider>

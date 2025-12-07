@@ -2,11 +2,18 @@
 export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
   devtools: { enabled: true },
-  css: ['~/assets/css/tailwind.css'],
+  css: [
+    'vue-sonner/style.css',
+    '~/assets/css/tailwind.css',
+    '~/assets/css/shadcn.css',
+    '~/assets/css/sidebar.css',
+    '~/assets/css/base.css'
+  ],
   modules: [
     '@nuxtjs/tailwindcss',
     'shadcn-nuxt',
-    '@vueuse/nuxt'
+    '@vueuse/nuxt',
+    '@pinia/nuxt'
   ],
   shadcn: {
     /**
@@ -19,4 +26,5 @@ export default defineNuxtConfig({
      */
     componentDir: './app/components/ui'
   },
+  pinia: {}
 })

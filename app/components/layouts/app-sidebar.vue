@@ -7,9 +7,13 @@ import {
   SidebarGroupLabel,
   SidebarMenu,
   SidebarMenuItem,
-  SidebarMenuButton
+  SidebarMenuButton,
+  useSidebar
 } from '@/components/ui/sidebar'
 import { Cuboid, ScanEye } from "lucide-vue-next"
+
+const { isMobile, setOpenMobile } = useSidebar()
+const route = useRoute()
 
 const items = [
   {
@@ -23,6 +27,13 @@ const items = [
     icon: ScanEye,
   }
 ];
+
+const handleNavItemClick = () => {
+  // 在手機版時點擊導航項目後關閉側邊欄
+  if (isMobile.value) {
+    setOpenMobile(false)
+  }
+}
 </script>
 
 <template>
@@ -33,8 +44,8 @@ const items = [
         <SidebarGroupContent>
           <SidebarMenu>
             <SidebarMenuItem v-for="item in items" :key="item.title">
-              <SidebarMenuButton as-child>
-                  <NuxtLink :prefetch="false" :to="item.url">
+              <SidebarMenuButton as-child :class="{ 'bg-gray-200': route.path.includes(item.url) }">
+                  <NuxtLink :prefetch="false" :to="item.url" @click="handleNavItemClick">
                     <component :is="item.icon" />
                     <span>{{item.title}}</span>
                   </NuxtLink>

@@ -53,11 +53,42 @@ export default {
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
         },
+        red: {
+          delete: "#BF1419",
+          claret: "#7C1F31",
+        },
+        green: {
+          mint: "#69A481",
+          'white-smoke': "#E7EDEB"
+        }
       },
       borderRadius: {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
+      },
+      width: {
+        'select-trigger': 'var(--reka-select-trigger-width, 100%)',
+        'select-content': 'var(--reka-select-trigger-width, 100%)',
+      },
+      zIndex: {
+        'select': '50',
+        'popover': '50',
+        'dropdown': '1000',
+      },
+      animation: {
+        'select-content-show': 'fade-in 0.15s ease-out',
+        'select-content-hide': 'fade-out 0.15s ease-in',
+      },
+      keyframes: {
+        'fade-in': {
+          '0%': { opacity: '0', transform: 'scale(0.95)' },
+          '100%': { opacity: '1', transform: 'scale(1)' },
+        },
+        'fade-out': {
+          '0%': { opacity: '1', transform: 'scale(1)' },
+          '100%': { opacity: '0', transform: 'scale(0.95)' },
+        },
       },
     },
   },

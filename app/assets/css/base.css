@@ -1,0 +1,14 @@
+.element-enter-active,
+.element-leave-active {
+    transition: all 1s ease;
+}
+
+.element-enter-from,
+.element-leave-to {
+    opacity: 0;
+    transform: scale(0.8);
+}
+
+.element-move {
+    transition: all 1s ease;
+}
