@@ -10,7 +10,7 @@ const props = defineProps<{
 
 const componentsRendering = {
   spaceY: defineAsyncComponent(()=> import('./components/spaceY.vue')),
-//   separator: defineAsyncComponent(()=> import('./components/Separator/index.vue')),
+  separator: defineAsyncComponent(()=> import('./components/separator.vue')),
 //   input: defineAsyncComponent(()=> import('./components/Input/index.vue')),
 //   input_password: defineAsyncComponent(()=> import('./components/InputPassword/index.vue')),
 //   input_date: defineAsyncComponent(()=> import('./components/InputDate/index.vue')),
