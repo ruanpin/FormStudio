@@ -1,11 +1,7 @@
-<script setup>
-
+<script setup lang="ts">
+import Preview from '@/features/preview'
 </script>
 
 <template>
-    <div>preview</div>
+    <Preview />
 </template>
-
-<style scoped lang="">
-    
-</style>
