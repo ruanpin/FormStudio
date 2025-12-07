@@ -99,10 +99,14 @@ const deleteUrl = (arr: Url[], index: number) => {
                 <div
                     v-for="(_, index) in formConfig.submit.urls"
                     :key="index"
-                    class="flex items-center"
+                    class="flex items-center gap-2"
                 >
                     <Input v-model="formConfig.submit.urls[index]!.url" />
-                    <Button @click="deleteUrl(formConfig.submit.urls, index)">
+                    <Button
+                        variant="outline"
+                        class="text-red-delete"
+                        @click="deleteUrl(formConfig.submit.urls, index)"
+                    >
                         <Trash />
                     </Button>
                 </div>
