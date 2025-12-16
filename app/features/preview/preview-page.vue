@@ -13,7 +13,7 @@ const componentsRendering = {
   separator: defineAsyncComponent(()=> import('./components/separator.vue')),
   input: defineAsyncComponent(()=> import('./components/input.vue')),
   inputPassword: defineAsyncComponent(()=> import('./components/input-password.vue')),
-//   input_date: defineAsyncComponent(()=> import('./components/InputDate/index.vue')),
+  inputDate: defineAsyncComponent(()=> import('./components/input-date.vue')),
 //   radio: defineAsyncComponent(()=> import('./components/Radio/index.vue')),
 //   toggle: defineAsyncComponent(()=> import('./components/Toggle/index.vue')),
 //   textarea: defineAsyncComponent(()=> import('./components/Textarea/index.vue')),
@@ -43,12 +43,12 @@ const componentsRendering = {
 </template>
 
 <style scoped>
-    :deep(.layout-flex-row) {
-        display: flex;
-        align-items: center;
-    }
-    :deep(.layout-flex-column) {
-        display: flex;
-        flex-direction: column;
-    }
+:deep(.layout-flex-row) {
+    display: flex;
+    align-items: center;
+}
+:deep(.layout-flex-column) {
+    display: flex;
+    flex-direction: column;
+}
 </style>
