@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import type { DateValue } from 'reka-ui'
-import { computed } from 'vue'
 import DatePicker from '@/components/atoms/date-picker.vue'
 
 import type { InputDate as IInputDate } from '../types/form-element'
