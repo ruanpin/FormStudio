@@ -6,6 +6,7 @@ const selectedFile = defineModel<File | null>({ default: null })
 const props = withDefaults(defineProps<{
   placeholder?: string;
   triggerClass?: string;
+  accept?: string;
 }>(), {
   placeholder: '點擊上傳檔案'
 })
@@ -56,6 +57,7 @@ const triggerFileInput = () => {
     <input 
       ref="inputRef"
       type="file"
+      :accept="accept"
       class="hidden"
       @change="handleChange"
     />
