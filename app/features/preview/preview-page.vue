@@ -19,10 +19,7 @@ const componentsRendering = {
   textarea: defineAsyncComponent(()=> import('./components/textarea.vue')),
   checkbox: defineAsyncComponent(()=> import('./components/checkbox.vue')),
   select: defineAsyncComponent(()=> import('./components/select.vue')),
-//   uploadImg: defineAsyncComponent(()=> import('./components/UploadImg/index.vue')),
-//   mutiInputsColumn: defineAsyncComponent(()=> import('./components/MutiInputsColumn/index.vue')),
-//   mutiSelectsColumn: defineAsyncComponent(()=> import('./components/MutiSelectsColumn/index.vue')),
-//   dateRange: defineAsyncComponent(()=> import('./components/DateRange/index.vue')),
+  uploadImg: defineAsyncComponent(()=> import('./components/upload-img.vue')),
 }
 </script>
 
