@@ -26,6 +26,10 @@ const element = defineModel<IUploadImg>('element', { required: true })
       <div class="text-4 font-bold">API對應key(field)</div>
       <Input v-model="element.field" ></Input>
     </div>
+    <div>
+      <div class="text-4 font-bold">檔案大小Bytes限制(maxSize)</div>
+      <Input v-model="element.maxSize" ></Input>
+    </div>
     <slot></slot>
   </div>
 </template>
