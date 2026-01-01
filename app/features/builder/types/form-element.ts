@@ -68,6 +68,7 @@ interface BaseUpload<T extends FormElementType> extends BaseFormElement<T> {
   value: File | null;
   originValue: File | null;
   previewImgURL: string;
+  maxSize?: number;
 }
 
 // ================== 特殊元件介面 ==================
