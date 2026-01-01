@@ -28,10 +28,10 @@ const componentsRendering = {
         <template v-for="(element, index) in formConfig.render" :key="index">
             <div class="row items-center">
                 <div class="col">
+                    <!-- @updateCrObjectToRenderList="updateCrObjectToRenderList" -->
                     <component
                         :is="componentsRendering[element.type as FormElementType]"
-                        v-model:element="formConfig.render[index]"
-                        @updateCrObjectToRenderList="updateCrObjectToRenderList"
+                        v-model:element="formConfig.render[index]! as any"
                     />
                 </div>
             </div>
