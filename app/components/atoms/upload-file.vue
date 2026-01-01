@@ -7,9 +7,14 @@ const props = withDefaults(defineProps<{
   placeholder?: string;
   triggerClass?: string;
   accept?: string;
+  maxSize?: number; // bytes
 }>(), {
   placeholder: '點擊上傳檔案'
 })
+
+const emit = defineEmits<{
+  sizeExceeded: [fileSize: number, maxSize: number]
+}>()
 
 const inputRef = ref<HTMLInputElement>()
 
@@ -37,6 +42,11 @@ const handleChange = (event: Event) => {
   const file = input.files?.[0]
   
   if (file) {
+    // 檢查檔案大小
+    if (props.maxSize && file.size > props.maxSize) {
+      emit('sizeExceeded', file.size, props.maxSize)
+      return
+    }
     selectedFile.value = file
   } else if (selectedFile.value) {
     if (inputRef.value && selectedFile.value) {

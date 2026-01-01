@@ -8,10 +8,15 @@ const props = withDefaults(defineProps<{
   triggerClass?: string;
   accept?: string;
   objectFit?: 'contain' | 'cover' | 'fill' | 'scale-down' | 'none';
+  maxSize?: number; // bytes
 }>(), {
   placeholder: '點擊上傳圖片',
   objectFit: 'cover'
 })
+
+const emit = defineEmits<{
+  sizeExceeded: [fileSize: number, maxSize: number]
+}>()
 
 const inputRef = ref<HTMLInputElement>()
 
@@ -51,18 +56,20 @@ const handleChange = (event: Event) => {
     return
   }
 
+  // 檢查檔案大小
+  if (props.maxSize && file.size > props.maxSize) {
+    emit('sizeExceeded', file.size, props.maxSize)
+    return
+  }
+
   if (previewURL.value) {
     URL.revokeObjectURL(previewURL.value)
     previewURL.value = null
   }
   
-  if (file) {
-    selectedFile.value = file
-    if (file.type.startsWith('image/')) {
-      previewURL.value = URL.createObjectURL(file)
-    }
-  } else {
-    selectedFile.value = null
+  selectedFile.value = file
+  if (file.type.startsWith('image/')) {
+    previewURL.value = URL.createObjectURL(file)
   }
 }
 
